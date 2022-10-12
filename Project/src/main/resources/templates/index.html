@@ -70,112 +70,66 @@
       <!-- <img style="opacity: 10%;" src="./assets/images/img-12.jpg" alt=""> -->
       <div class="new-10">
         <div class="col-xs-12 section-container-spacer main-name-size">
-          <div class="list">
-            <span>ChefONE</span>
+     <span class="main-title" >뭐</span><!-- 
+          --><span class="main-title">먹</span><!--
+          --><span class="main-title">조</span> 
+              <!-- span class="main-title">정</span  -->
+              <!-- span class="main-title">해</span  -->
+              <!-- span class="main-title">조</span> --> 
+            
             <div class="new-11">
               <p>뭐먹조정해조는 스마트인재개발원을 대표하는 </p>
               <p>외국인 대상 음식 추천 조리법을 소개하려고 합니다.</p>
             </div>
             <div class=" newmainBanner-bg a-Opacity is-Opacity">
-              <span class="newmainBanner-bg-img" style="background-image: url(../images/img-14.jpg)">
+              <span class="newmainBanner-bg-img" style="background-image: url(../images/음식15.jpg)">
               </span>
             </div>
-            <!-- <div class="img-center-style" >
-              <p>
-                  <span>L</span>
-                  <span>E</span>
-                  <span>A</span>
-                  <span>D</span>
-                  <span>E</span>
-                  <span>R</span>
-              </p>
-          </div> -->
           </div>
         </div>
 
         <div class="col-xs-12 form-group-start">
           <div class="">
             <button style="display: none;" id="upload-btn"></button>
-            <label class="upload-label01" for="upload-btn">Upload your Ingredient</label>
+            <label class="upload-label01" for="upload-btn">Upload</label>
           </div>
           <div class="search-center-main">
             <input type="text" class="insert-start" placeholder="요리를 검색하세요">
-            <button style="margin: 1%;" type="submit" class="btn btn-primary btn-lg">Send</button>
+           <!--  <button style="margin: 1%;" type="submit" class="btn btn-primary btn-lg">Send</button> -->
           </div>
         </div>
 
       </div>
 
       <div class="col-xs-12 section-container-spacer main-down-margin">
-        <h1>Services</h1>
+        <h1><span class="main-title">S</span><!-- 
+         --><span class="main-title">e</span><!-- 
+         --><span class="main-title">r</span><!-- 
+         --><span class="main-title">v</span><!-- 
+         --><span class="main-title">i</span><!-- 
+         --><span class="main-title">c</span><!-- 
+         --><span class="main-title">e</span><!-- 
+         --><span class="main-title">s</span></h1>
 
       </div>
       
+   <div id="slideShowm">
+      <ul class="slidesm">
+        <li><img class="main-slide-size" src="../images/음식06.jpg" alt=""></li>
+        <li><img class="main-slide-size" src="../images/음식01.jpg" alt=""></li>
+        <li><img class="main-slide-size" src="../images/음식08.jpg" alt=""></li>
+        <li><img class="main-slide-size" src="../images/음식07.jpg" alt=""></li>
+      </ul>
+      <p class="controllerm">
+
+        <!-- &lang: 왼쪽 방향 화살표
+            &rang: 오른쪽 방향 화살표 -->
+        <span class="prevm">&lang;</span>
+        <span class="nextm">&rang;</span>
+      </p>
+    </div>
    
-      
-      
-        <div class="col-xs-4 ">
-          <img id="down-img"  src="../images/음식06.jpg" alt="">
-          <div id='resultmain'>
-          </div>
-        </div>
-        
-        <div class="col-xs-4">
-          <img id="down-img"  src="../images/음식01.jpg" alt="">
-          <div id='resultmain'>
-          </div>
-        </div>
-        <div class="col-xs-4">
-          <img id="down-img"  src="../images/음식08.jpg" alt="">
-          <div id='resultmain'>
-          </div>
-        </div>
-     
-        <!-- 휠이벤트 -->
-        <!-- <div class="box" style="background-color:red;">1</div>
-<div class="box" style="background-color:orange;">2</div>
-<div class="box" style="background-color:yellow;">3</div>
-<div class="box" style="background-color:green;">4</div>
-<div class="box" style="background-color:blue;">5</div>
-<div class="box" style="background-color:indigo;">6</div>
-<div class="box" style="background-color:violet;">7</div>
-         -->
-    
-      <!-- <input id='clearbtn' type='button' value='clear' /> -->
-     
-      <!-- <div >
-        <p>
-          <span>G</span>
-          <span>L</span>
-          <span>O</span>
-          <span>B</span>
-          <span>A</span>
-          <span>L</span>
-        </p>
-        <p>
-          <span>R</span>
-          <span>E</span>
-          <span>T</span>
-          <span>A</span>
-          <span>I</span>
-          <span>L</span>
-          <span>&nbsp</span>
-          <span>T</span>
-          <span>E</span>
-          <span>C</span>
-          <span>H</span>
-        </p>
-        <p>
-          <span>L</span>
-          <span>E</span>
-          <span>A</span>
-          <span>D</span>
-          <span>E</span>
-          <span>R</span>
-        </p>
-      </div> -->
-
-
+     <div class="list"> 
       <div class="moveTopBtn">Top</div>
 
     </div>
@@ -198,46 +152,59 @@
     });
   </script>
 
+  <!-- 메인 슬라이드 -->
   <script>
-    const div = document.getElementById('down-img');
-    const clearbtn = document.getElementById('clearbtn');
-    const result = document.getElementById('resultmain');
+    const slidesm = document.querySelector('.slidesm'); //전체 슬라이드 컨테이너
+    const slideImgm = document.querySelectorAll('.slidesm li'); //모든 슬라이드들
+    let currentIdxm = 0; //현재 슬라이드 index
+    const slideCountm = slideImgm.length; // 슬라이드 개수
+    const prevm = document.querySelector('.prevm'); //이전 버튼
+    const nextm = document.querySelector('.nextm'); //다음 버튼
+    const slideWidthm = 800; //한개의 슬라이드 넓이
+    const slideMarginm = 50; //슬라이드간의 margin 값
 
-    div.addEventListener('mouseover', (event) => {
-      result.innerHTML += '<div>김치찌개</div>';
-      result.style.fontSize = '30px';
-      result.style.transition = '2s'
-      result.style.color = 'black'
-      // result.style.fontStyle = 'bold'
-      
+    //전체 슬라이드 컨테이너 넓이 설정
+    slidesm.style.width = '2500px'
+    // (slideWidth*2 + slideMargin) * slideCount + 'px';
+    function moveSlidem(num) {
+      slidesm.style.left = -num * 400 + 'px';
+      currentIdxm = num;
+    }
 
+    prevm.addEventListener('click', function () {
+      /*첫 번째 슬라이드로 표시 됐을때는 
+      이전 버튼 눌러도 아무런 반응 없게 하기 위해 
+      currentIdx !==0일때만 moveSlide 함수 불러옴 */
+
+      if (currentIdxm !== 0) moveSlidem(currentIdxm - 1);
     });
 
-    div.addEventListener('mouseout', (event) => {
-      // result.innerHTML += '<div>mouseout</div>';
-      result.innerHTML = '';
-      result.style.transition = '2s'
+    nextm.addEventListener('click', function () {
+      /* 마지막 슬라이드로 표시 됐을때는 
+      다음 버튼 눌러도 아무런 반응 없게 하기 위해
+      currentIdx !==slideCount - 1 일때만 
+      moveSlide 함수 불러옴 */
+      if (currentIdxm !== slideCountm - 1) {
+        moveSlidem(currentIdxm + 1);
+      }
     });
 
-    // div.addEventListener('mouseover', (event) => {
-    //   // div.style.height = '600px';
-    // });
-
-
-   
-
-    // div.addEventListener('mouseout', (event) => {
-    //   // result.innerHTML += '<div>mouseout</div>';
-    //   // div.style.height = '600px';
-    // });
-
-    // clearbtn.addEventListener('click', (event) => {
-    //   result.innerHTML = '';
-      // count = 0;
-    // });
   </script>
 
 
+  <!-- 글씨부드럽게나타남 -->
+  <script>
+    const introText = document.querySelectorAll('.main-title')
+
+    window.onload = () => {
+      let timer = 100;
+      introText.forEach((item) => {
+        item.style.animation = `fade 500ms ${(timer += 80)}ms forwards`;
+      });
+    };
+  </script>
+
+<!-- top 상단이동 -->
   <script>
     const $topBtn = document.querySelector(".moveTopBtn");
 
@@ -247,9 +214,9 @@
     }
 
     // 처음에 페이지 하단으로 스크롤 위치 지정
-    window.onload = () => {
+    /* window.onload = () => {
       window.scrollTo({ top: document.body.scrollHeight });
-    }
+    } */
   </script>
   <script type="text/javascript" src="../js/main.85741bff.js"></script>
 </body>

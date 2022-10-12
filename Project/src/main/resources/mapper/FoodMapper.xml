@@ -12,4 +12,38 @@
 		select * from food where food_seq=#{food_seq} and user_id=#{user_id}
 	</select>
 	
+		<!-- ingredient_name autocomplete -->
+	<select id="IngredientAuto" resultType="com.smhrd.domain.Ingredient"> 
+		select * from ingredient where ingredient_name like CONCAT('%', #{ingredient}, '%') 
+	</select> 
+
+
+ 	<select id="RelationList"  resultType="com.smhrd.domain.Relationship" parameterType="com.smhrd.domain.FoodVO">
+		select food_seq from relationship
+		where
+		<foreach collection="intarr" item="item"
+			 separator=" or " >
+			 ingredient_seq = #{item}
+		</foreach>
+		group by food_seq
+		having count(food_seq) = #{lenth}
+	</select> 
+
+
+	<select id="FoodList" resultType="com.smhrd.domain.Food">
+		select * from food where
+		<foreach collection="intList" item="item" open="food_seq in(" close=")" separator=",">
+			#{item}
+		</foreach>
+	</select>
+
+	<!-- food_name autocomplete -->
+	<select id="FoodAuto" resultType="com.smhrd.domain.Food"> 
+		select * from food where food_name like CONCAT('%', #{food}, '%') 
+	</select> 
+	
+	
+	
+	
+	
 </mapper>
