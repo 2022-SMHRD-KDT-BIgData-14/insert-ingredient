@@ -107,7 +107,7 @@
 				<!-- <textarea
 					style="vertical-align: middle; margin-left: -10%; width: 10%; font-size: 20px; resize: none;"
 					name="" id="" cols="10" rows="1">해당영상자리</textarea> -->
-				<video th:src="@{session.Food.youtube}"></video>	
+				<video th:src="@{${session.Food.youtube}}"></video>	
 				[[${session.Food.youtube}]]
 			</div>
 
@@ -183,7 +183,7 @@
     		/* for문 돌려서 하나씩 넣기 */
    			for(let i = 0; i<img_arr.length-1; i++){
 	    		$('#processIMG').append(
-	    			`<img th:src="@{(img_arr[i])}" alt="과정 이미지 자리임"><br>`
+	    			`<img th:src="@{${img_arr[i]}}" alt="과정 이미지 자리임"><br>`
 	    			
 	    		);
 	    		$('#processArticle').append(
