@@ -92,7 +92,8 @@
           <div class="col-xs-12 col-md-6 section-container-spacer">
           <h2>최근 목록</h2>
           <div id="slideShow2">
-            <ul class="slides2">
+            <ul class="slides2" th:each="recentList:${recentList}">
+              <li><img style="width: 300px;" th:src="${recentList.food_img}" alt="최근 본 자리임"></li>
               <li><img style="width: 300px;" src="../images/img-010.jpg" alt=""></li>
               <li><img style="width: 300px;"src="../images/img-010.jpg" alt=""></li>
               <li><img style="width: 300px;"src="../images/img-010.jpg" alt=""></li>
