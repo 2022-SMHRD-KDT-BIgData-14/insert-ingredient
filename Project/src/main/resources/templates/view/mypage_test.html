@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<!-- <html lang="en"> -->
+<!-- 타임리프 스키마 삽입 : 태그, 속성들 사용 -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="width=device-width,initial-scale=1" name="viewport">
+<meta content="Page description" name="description">
+<meta name="google" content="notranslate" />
+<meta content="Mashup templates have been developped by Orson.io team"
+	name="author">
+
+<!-- Disable tap highlight on IE -->
+<meta name="msapplication-tap-highlight" content="no">
+
+<link href="./images/apple-icon-180x180.png" rel="apple-touch-icon">
+<link href="./images/favicon.ico" rel="icon">
+
+
+
+<title>Title page</title>
+
+<link href="../css/main.css" rel="stylesheet">
+<link href="../css/main.82cfd66e.css" rel="stylesheet">
+<link href="../js/main.js" rel="stylesheet">
+<script type="text/javascript" src="../js/main.85741bff.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style type="text/css">
+	/* 마이페이지 이미지 사진 고정 해보기 */
+	#wishIMG{width:600px}
+</style>
+</head>
+
+<body>
+
+	<!-- Add your content of header -->
+	<header class="">
+		<div class="navbar navbar-default visible-xs">
+			<button type="button" class="navbar-toggle collapsed">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a th:href="goMain.do" class="navbar-brand">Insert Ingredient</a>
+		</div>
+
+		<nav class="sidebar">
+			<div class="navbar-collapse" id="navbar-collapse">
+				<div class="site-header hidden-xs">
+					<a class="site-brand" th:href="goMain.do" title=""> <img
+						class="img-responsive site-logo" alt=""
+						src="../images/logo_test02.png" style="width:40%;"><h3> Insert Ingredient</h3></a>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+						sed do eiusmod tempor.</p>
+				</div>
+				<ul class="nav">
+					<li><a th:href="goMain.do" title="">Home</a></li>
+					<li><a th:href="goUpload_a.do" title="">Upload</a></li>
+					<li><a th:href="goMypage.do" title="">MyPage</a></li>
+				</ul>
+
+					
+				<nav class="nav-footer">
+					<!-- 로그아웃 -->
+					<p>
+						<a href="logout.do">Logout</a>
+					</p>
+					<p class="nav-footer-social-buttons">
+						<a class="fa-icon" th:href="@{https://www.instagram.com/}"
+							title=""> <i class="fa fa-instagram"></i>
+						</a> <a class="fa-icon" th:href="@{https://dribbble.com/}" title="">
+							<i class="fa fa-dribbble"></i>
+						</a> <a class="fa-icon" th:href="@{https://twitter.com/}" title="">
+							<i class="fa fa-twitter"></i>
+						</a>
+					</p>
+					<p>
+						© Untitled | Website created with <a
+						th:href="@{http://www.mashup-template.com/}"
+						title="Create website with free html template">Insert Ingredient</a>/<a href="https://www.unsplash.com/"
+						title="Beautiful Free Images">Unsplash</a>
+					</p>
+				</nav>
+			</div>
+		</nav>
+	</header>
+	
+	
+	<main class="" id="main-collapse">
+		<h1>여기는 [[${session.member.user_id}]]님 myPage</h1>
+		<!-- 찜목록 -->
+		<div>
+		<h1>여기는 찜 목록</h1>
+		<table border="1">
+			<thead>
+				<tr>
+					<td>No.</td>
+					<td>food_img</td>
+					<td>food_name</td>
+				</tr>
+				
+				<tr th:each="wishlist : ${list}">
+					<td th:text="${wishlist.food_seq}"></td>
+					<td>
+						<img id="wishIMG" alt="food_img자리임" th:src="${wishlist.food_img}">
+					</td>
+					
+					<td th:text="${wishlist.food_name}"></td>
+				</tr>
+			</thead>	
+			<hr>
+			<tbody id="tBody">
+			</tbody>
+		</table>
+		</div>
+		
+		
+	</main>
+	
+	
+	<script type="text/javascript" th:inline="javascript">
+		// 페이지 로드될 떄, show_wishlist 함수 실행
+		$(document).ready(show_wishlist);
+		
+		// 찜 리스트 출력하는 함수
+		function show_wishlist(){
+			$.ajax({
+				url:'showWishAjax.do',
+				type : 'get',
+				dataType : 'json',
+				success : makeList,
+				error : function(e){ alert('error') }
+			})
+			
+		}
+		// 성공했을 때, 실행할 함수 makeList
+		function makeList(list){
+			// 테이블 공간 초기화
+			$('#tBody').html('');
+			
+			// 배열로 넣기
+			for(let i = 0; i<list.length; i++){
+				console.log("리스트 " + i + "번째임" + list[i])
+				$('#tbody').append(
+					`
+					<tr>
+						<td>"${list[i].food_seq}"</td>
+						<td><img th:src="${list[i].food_img}"></td>
+						<td>"${list[i].food_name}"</td>
+					</tr>
+					`
+						
+				)
+			}
+		}
+		
+		
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<!-- 타임리프 스키마 삽입 : 태그, 속성들 사용 -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <meta content="description" name="description">
+  <meta name="google" content="notranslate" />
+  <meta content="Mashup templates have been developped by Orson.io team" name="author">
+
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <link href="./images/apple-icon-180x180.png" rel="apple-touch-icon">
+<link href="./images/favicon.ico" rel="icon">
+
+
+
+  <title>Title page</title>
+
+<link href="../css/main.82cfd66e.css" rel="stylesheet">
+<link href="../js/main.js" rel="stylesheet">
+<script type="text/javascript" src="../js/main.85741bff.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+  <!-- Add your content of header -->
+  <header class="">
+    <div class="navbar navbar-default visible-xs">
+      <button type="button" class="navbar-toggle collapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a th:href="goMain.do" class="navbar-brand">Insert Ingredient</a>
+    </div>
+
+    <nav class="sidebar">
+      <div class="navbar-collapse" id="navbar-collapse">
+        <div class="site-header hidden-xs ">
+          <a class="site-brand site-brand-size" th:href="goMain.do" title="">
+            <img class="img-responsive site-logo" alt="" src="../images/logo_test02.png">
+            <span>Insert Ingredient</span>
+          </a>
+         
+        </div>
+        <ul class="nav">
+			<li><a th:href="goMain.do" title="">Home</a></li>
+			<li><a th:href="goUpload.do" title="">Upload</a></li>
+			<li><a th:href="goMypage.do" title="">MyPage</a></li>
+        </ul>
+
+        <nav class="nav-footer">
+          <!-- <a class="nav-footer-lj" href="./join-a.html" title="">Login / Join</a> -->
+          <h5><a th:href="goLogin.do" title="">Login</a> / <a th:href="goJoin.do" title="">Join</a></h5>
+          <p>© Untitled | Website created with <a href="https://shrcampus.com/"
+              title="Beautiful Free Images">shrcampus</a></p>
+        </nav>
+      </div>
+    </nav>
+  </header>
+  <main class="" id="main-collapse">
+
+
+    <div class="row">
+      <!-- <img style="opacity: 10%;" src="./assets/images/img-12.jpg" alt=""> -->
+      <div class="new-10">
+        <div class="col-xs-12 section-container-spacer main-name-size">
+          <div class="list">
+            <span>ChefONE</span>
+            <div class="new-11">
+              <p>뭐먹조정해조는 스마트인재개발원을 대표하는 </p>
+              <p>외국인 대상 음식 추천 조리법을 소개하려고 합니다.</p>
+            </div>
+            <div class=" newmainBanner-bg a-Opacity is-Opacity">
+              <span class="newmainBanner-bg-img" style="background-image: url(../images/img-14.jpg)">
+              </span>
+            </div>
+            <!-- <div class="img-center-style" >
+              <p>
+                  <span>L</span>
+                  <span>E</span>
+                  <span>A</span>
+                  <span>D</span>
+                  <span>E</span>
+                  <span>R</span>
+              </p>
+          </div> -->
+          </div>
+        </div>
+
+        <div class="col-xs-12 form-group-start">
+          <div class="">
+            <button style="display: none;" id="upload-btn"></button>
+            <label class="upload-label01" for="upload-btn">Upload your Ingredient</label>
+          </div>
+          <div class="search-center-main">
+            <input type="text" class="insert-start" placeholder="요리를 검색하세요">
+            <button style="margin: 1%;" type="submit" class="btn btn-primary btn-lg">Send</button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-xs-12 section-container-spacer main-down-margin">
+        <h1>Services</h1>
+
+      </div>
+      
+   
+      
+      
+        <div class="col-xs-4 ">
+          <img id="down-img"  src="../images/음식06.jpg" alt="">
+          <div id='resultmain'>
+          </div>
+        </div>
+        
+        <div class="col-xs-4">
+          <img id="down-img"  src="../images/음식01.jpg" alt="">
+          <div id='resultmain'>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <img id="down-img"  src="../images/음식08.jpg" alt="">
+          <div id='resultmain'>
+          </div>
+        </div>
+     
+        <!-- 휠이벤트 -->
+        <!-- <div class="box" style="background-color:red;">1</div>
+<div class="box" style="background-color:orange;">2</div>
+<div class="box" style="background-color:yellow;">3</div>
+<div class="box" style="background-color:green;">4</div>
+<div class="box" style="background-color:blue;">5</div>
+<div class="box" style="background-color:indigo;">6</div>
+<div class="box" style="background-color:violet;">7</div>
+         -->
+    
+      <!-- <input id='clearbtn' type='button' value='clear' /> -->
+     
+      <!-- <div >
+        <p>
+          <span>G</span>
+          <span>L</span>
+          <span>O</span>
+          <span>B</span>
+          <span>A</span>
+          <span>L</span>
+        </p>
+        <p>
+          <span>R</span>
+          <span>E</span>
+          <span>T</span>
+          <span>A</span>
+          <span>I</span>
+          <span>L</span>
+          <span>&nbsp</span>
+          <span>T</span>
+          <span>E</span>
+          <span>C</span>
+          <span>H</span>
+        </p>
+        <p>
+          <span>L</span>
+          <span>E</span>
+          <span>A</span>
+          <span>D</span>
+          <span>E</span>
+          <span>R</span>
+        </p>
+      </div> -->
+
+
+      <div class="moveTopBtn">Top</div>
+
+    </div>
+
+  </main>
+
+	<script type="text/javascript">
+	// 업로드 버튼 클릭 시, 페이지 이동
+	$('#upload-btn').click(function(){
+		console.log("업로드 버튼 클릭~!")
+		location.href="goUpload.do";
+	})
+	</script>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+      navbarToggleSidebar();
+      navActivePage();
+    });
+  </script>
+
+  <script>
+    const div = document.getElementById('down-img');
+    const clearbtn = document.getElementById('clearbtn');
+    const result = document.getElementById('resultmain');
+
+    div.addEventListener('mouseover', (event) => {
+      result.innerHTML += '<div>김치찌개</div>';
+      result.style.fontSize = '30px';
+      result.style.transition = '2s'
+      result.style.color = 'black'
+      // result.style.fontStyle = 'bold'
+      
+
+    });
+
+    div.addEventListener('mouseout', (event) => {
+      // result.innerHTML += '<div>mouseout</div>';
+      result.innerHTML = '';
+      result.style.transition = '2s'
+    });
+
+    // div.addEventListener('mouseover', (event) => {
+    //   // div.style.height = '600px';
+    // });
+
+
+   
+
+    // div.addEventListener('mouseout', (event) => {
+    //   // result.innerHTML += '<div>mouseout</div>';
+    //   // div.style.height = '600px';
+    // });
+
+    // clearbtn.addEventListener('click', (event) => {
+    //   result.innerHTML = '';
+      // count = 0;
+    // });
+  </script>
+
+
+  <script>
+    const $topBtn = document.querySelector(".moveTopBtn");
+
+    // 버튼 클릭 시 맨 위로 이동
+    $topBtn.onclick = () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    // 처음에 페이지 하단으로 스크롤 위치 지정
+    window.onload = () => {
+      window.scrollTo({ top: document.body.scrollHeight });
+    }
+  </script>
+  <script type="text/javascript" src="../js/main.85741bff.js"></script>
+</body>
+
+</html>

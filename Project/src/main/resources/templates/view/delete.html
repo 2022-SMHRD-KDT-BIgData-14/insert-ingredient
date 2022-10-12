@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!-- 타임리프 스키마 삽입 : 태그, 속성들 사용 -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	[[${session.member}]]
+	<!-- 회원탈퇴 html 페이지 -->
+	<h3>[[${session.member.user_name}]]님, 임시 회원탈퇴 창</h3>
+	<form th:action="@{/delete.do}" method="post" th:object="${member}">
+		<input type="hidden" th:value="${session.member.user_id}" name="user_id" readonly><br>
+		Confirm your password <input type="password" th:field = "*{user_pw}" name="user_pw"><br>
+		<button>탈퇴</button>
+	</form>
+	
+	<script type="text/javascript">
+		/* 탈퇴버튼 클릭 시, alert 창 띄우고 메인으로 이동 함수 */
+		$(document).ready(function(){
+			alert('정말로 탈퇴하시겠습니까?')
+		})
+		
+		/* $('document').ready(load);
+		
+		function load(){
+			$.ajax({
+				url : 'delete',
+				type : 'get',
+				data : {"alert" : alertMsg},
+				success : function(){
+					alert("정말로 탈퇴하시겠습니까?")
+				},
+				error : function(e){ alert(e) }
+			})
+		} */
+		
+	</script>
+	
+</body>
+</html>

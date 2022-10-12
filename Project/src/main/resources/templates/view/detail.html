@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<!-- 타임리프 스키마 삽입 : 태그, 속성들 사용 -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="width=device-width,initial-scale=1" name="viewport">
+<meta content="description" name="description">
+<meta name="google" content="notranslate" />
+<meta content="Mashup templates have been developped by Orson.io team"
+	name="author">
+
+<!-- Disable tap highlight on IE -->
+<meta name="msapplication-tap-highlight" content="no">
+
+<link href="./images/apple-icon-180x180.png" rel="apple-touch-icon">
+<link href="./images/favicon.ico" rel="icon">
+
+
+
+<title>Title page</title>
+<link href="../css/main.82cfd66e.css" rel="stylesheet">
+</head>
+<script src="//code.jquery.com/jquery.min.js"></script>
+
+<body>
+
+	<!-- Add your content of header -->
+	<header class="">
+		<div class="navbar navbar-default visible-xs">
+			<button type="button" class="navbar-toggle collapsed">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a th:href="goMain.do" class="navbar-brand">Insert Ingredient</a>
+		</div>
+
+		<nav class="sidebar">
+			<div class="navbar-collapse" id="navbar-collapse">
+				<div class="site-header hidden-xs">
+					<a class="site-brand site-brand-size" th:href="goMain.do" title="">
+						<img class="img-responsive site-logo" alt=""
+						src="../images/logo.png"> <span>Insert Ingredient</span>
+					</a>
+
+				</div>
+				<!-- 좌측 카테고리 -->
+				<ul class="nav">
+					<li><a th:href="goMain.do" title="">Home</a></li>
+					<li><a th:href="goUpload.do" title="">Upload</a></li>
+					<li><a th:href="goMypage.do" title="">MyPage</a></li>
+				</ul>
+
+				<nav class="nav-footer">
+					<!-- 로그아웃 -->
+					<h5>
+						<a th:href="goLogout.do" title="">Logout</a>
+					</h5>
+					<p class="nav-footer-social-buttons">
+						<a class="fa-icon" href="https://www.instagram.com/" title="">
+							<i class="fa fa-instagram"></i>
+						</a> <a class="fa-icon" href="https://dribbble.com/" title=""> <i
+							class="fa fa-dribbble"></i>
+						</a> <a class="fa-icon" href="https://twitter.com/" title=""> <i
+							class="fa fa-twitter"></i>
+						</a>
+					</p>
+					<p>
+						© Untitled | Website created with <a href="https://shrcampus.com/"
+							title="Beautiful Free Images">shrcampus</a>
+					</p>
+				</nav>
+			</div>
+		</nav>
+	</header>
+	
+	<!-- 메인화면 -->
+	<main class="" id="main-collapse">
+		<div class="list">
+			<h1>Detail</h1>
+			<div class="row">
+				<div class="col-xs-12 col-md-6 datail-upmargin">
+					<!-- 메인 음식 사진 -->
+					<img class="img-responsive detail-img-size" alt=""
+						th:src="${session.Food.food_img}">
+
+				</div>
+				<div class="col-xs-12 col-md-6 datail-upmargin">
+					<h1>About Food</h1>
+					<div class="col-md-4 col-xs-6 form-group ">
+						<!-- 요리 이름 -->
+						<span class="form-control detail-fontsize">[[${session.Food.food_name}]]</span>
+							
+					</div>
+					<div class="col-md-12 col-xs-12 form-group ">
+						<!-- 요리 소개 -->
+						<span style="width: 90%;" class="form-control detail-fontsize">[[${session.Food.introduce}]]</span>
+					</div>
+					<!-- 찜 버튼 -->
+					<button class="btn-like">💗</button>
+				</div>
+			</div>
+
+			<div class="recipe-youtube">
+				<!-- <img src="../images/img-07.jpg" alt=""> -->
+				<!-- <textarea
+					style="vertical-align: middle; margin-left: -10%; width: 10%; font-size: 20px; resize: none;"
+					name="" id="" cols="10" rows="1">해당영상자리</textarea> -->
+				<video th:src="@{session.Food.youtube}"></video>	
+				[[${session.Food.youtube}]]
+			</div>
+
+			<div class="recipe-order">
+				<!-- for문 돌려서 과정 이미지랑 글 가져오기 -->
+				<div id="processIMG" class="col-xs-12 col-md-6 datail-upmargin">
+					<!-- 요리 과정 이미지 -->
+					<!-- <img class="img-responsive detail-img-size" alt=""
+						th:src="@{https://recipe1.ezmember.co.kr/cache/recipe/2019/12/05/953857837fa18d0227096d79dc2af0621.jpg}">
+						[[${session.Food.process_img}]] -->
+					<br>
+				</div>
+				<div id="processArticle" class="col-md-6 recipe-order02">
+					<!-- 요리 과정 글 공간(자바스크립트) -->
+				</div>
+			</div>
+		</div>
+		<div class="moveTopBtn">Top</div>
+	</main>
+
+	<script>
+	    document.addEventListener("DOMContentLoaded", function (event) {
+	      navbarToggleSidebar();
+	      navActivePage();
+	    });
+    </script>
+  
+	<!-- 상세찜 -->
+	<script>
+	    $(".btn-like").click(function () {
+	      $(this).toggleClass("done");
+	      /* 찜 기능 넣어봄 */
+	      location.href="saveWish.do";
+	    })
+    </script>
+  
+	<script>
+	    const $topBtn = document.querySelector(".moveTopBtn");
+	
+	    // 버튼 클릭 시 맨 위로 이동
+	    $topBtn.onclick = () => {
+	      window.scrollTo({ top: 0, behavior: "smooth" });
+	    }
+	
+	    // 처음에 페이지 하단으로 스크롤 위치 지정
+	    window.onload = () => {
+	      window.scrollTo({ top: document.body.scrollHeight });
+	    }
+    </script>
+    
+    <!-- 페이지 로드될 때, 요리 과정 split해서 띄우기 -->
+    <script type="text/javascript" th:inline="javascript">
+    	$(document).ready(showProcess)
+    	
+    	function showProcess(){
+    		/* 과정 이미지 */
+    		/*<![CDATA[*/
+    		const str_img = [[${session.Food.process_img}]]
+    		const str_article = [[${session.Food.process_article}]]
+    		
+    		console.log(str_img)
+    		console.log(str_article)
+    		
+    		const img_arr = str_img.split("@");
+    		const article_arr = str_article.split("@");
+    		
+    		console.log("6번째 이미지" + img_arr[6])
+    		console.log("이미지 배열 길이" + img_arr.length)
+    		
+    		console.log("6번째 글" + article_arr[6])
+    		console.log("글 배열 길이" + article_arr.length)
+    		
+    		/* for문 돌려서 하나씩 넣기 */
+   			for(let i = 0; i<img_arr.length-1; i++){
+	    		$('#processIMG').append(
+	    			`<img th:src="@{(img_arr[i])}" alt="과정 이미지 자리임"><br>`
+	    			
+	    		);
+	    		$('#processArticle').append(
+	    			`<h2>` + (i+1) + `</h2>
+	    			<p>` + article_arr[i] + `</p>`
+	    		)
+   			}
+    		/*]]>*/
+    	}
+    	
+    </script>
+    
+
+	<script type="text/javascript" src="../js/main.85741bff.js"></script>
+</body>
+
+</html>

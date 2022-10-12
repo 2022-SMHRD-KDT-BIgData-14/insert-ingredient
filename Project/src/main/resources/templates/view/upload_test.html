@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!-- thymeleaf 스키마 삽입 -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="width=device-width,initial-scale=1" name="viewport">
+<meta content="Page description" name="description">
+<meta name="google" content="notranslate" />
+<meta content="Mashup templates have been developped by Orson.io team" name="author">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+  
+  <link href="./images/apple-icon-180x180.png" rel="apple-touch-icon">
+  <link href="./images/favicon.ico" rel="icon">
+
+
+
+  <title>Title page</title>  
+
+<link href="../css/main.82cfd66e.css" rel="stylesheet">
+</head>
+<body>
+
+	<!-- 업로드 공간 -->
+	<div>
+		[[${session.member}]]
+		<!-- 식재료이미지/텍스트/영수증이미지 업로드 -->
+		<h3>Image Upload</h3>
+		ingredient<input type="file" th:id="ingredientImg" multiple> <br>
+		
+		receipt<input type="file" th:id="receiptImg" multiple>
+		
+		<hr>
+		
+		<h3>Ingredient Text</h3>
+		<input type="text" th:id="ingredientText" placeholder="Insert your ingredient" th:name="ingredient_name">
+		<button id="textBtn">click</button>
+		
+		<!-- #textBtn 버튼 클릭 시, 식재료(텍스트) 추가되는 공간 -->
+		<div th:id="textContainer" th:name="ingredient_name"></div>
+		
+	</div>
+	<hr>
+	
+	
+	
+	<!-- 식재료 텍스트 값 보내기 -->
+	<h3>session값</h3>
+	[[${session.Food}]]
+		
+	<!-- 추천 음식 나오는 공간 -->
+	<div class="grid-item">
+      <img class="img-responsive" alt="" src="../images/img-13.jpg">
+      <a th:href="detail.do" th:class="project-description">
+        <div class="project-text-holder">
+          <div class="project-text-inner">
+            <h3>음식 이름</h3>
+            <p>음식 소개</p>
+          </div>
+        </div>
+      </a>
+    </div>
+	
+	
+	
+	
+	<!-- JavaScript -->
+	<script type="text/javascript">
+	
+		/* 식재료 텍스트 입력 후 화면에 출력 */
+		var text = document.getElementById('ingredientText')
+		$('#textBtn').click(()=>{
+			$('#textContainer').append('<h3>'+text.value+'</h3>')
+		})
+	
+		/* var text = document.getElementById('text');
+		text.addEventListener('click', function(e){
+			alert(e.text.value);
+			$('#textContainer').append(text.value)
+			console.log('text')
+		}) */
+		
+		/* var form = document.getElementById('textForm');
+		var input = document.querySelector('.ingredientText');
+		let textArea = document.getElementById('textContainer');
+		
+		form.addEventListener('submit', function(e){
+			e.preventDefault();
+			let msg = input.value;
+			
+			if(msg){
+				textArea.textContent = msg;
+				console.log('업로드완료');
+			}
+		}) */
+		
+		/* 음식 리스트 출력 함수 */
+		function foodList(){
+			$.ajax({
+				url : 'detail.do',
+				type : 'get',
+				dataType : 'json',
+				success : makeList,
+				error : function(e){alert(e)}
+			})
+		}
+		function makeList(res){
+			console.log(res[0].food_name)
+		}
+		
+		
+		
+	</script>
+	
+	<!-- 부트스트랩 스크립트 -->
+	<script>
+	  document.addEventListener("DOMContentLoaded", function (event) {
+	     masonryBuild();
+	  });
+	</script>
+
+
+	<script>
+	document.addEventListener("DOMContentLoaded", function (event) {
+	  navbarToggleSidebar();
+	  navActivePage();
+	});
+	</script>
+	
+	<script type="text/javascript" src="../js/main.85741bff.js"></script>
+	
+</body>
+</html>
