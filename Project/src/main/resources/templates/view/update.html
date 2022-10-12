@@ -84,10 +84,10 @@
                     <div class="form-group form-group-w">
                       <input type="hidden" th:value="${session.member.user_id}" name="user_id" readonly>
                     <div class="form-group form-group-w">
-                      <input type="password" th:field = "*{user_pw}" name="user_pw" th:placeholder="${session.member.user_pw}">
+                      <input type="password" th:field = "*{user_pw}" name="user_pw" th:placeholder="${session.member.user_pw}" class="form-control">
                     </div>
                     <div class="form-group form-group-w">
-                      <input type="text" th:field="*{user_name}" name="user_name" th:placeholder="${session.member.user_name}">
+                      <input type="text" th:field="*{user_name}" name="user_name" th:placeholder="${session.member.user_name}" class="form-control">
                     </div>
                     <!-- <div class='v-line'></div> -->
                     <button style="margin: 1%;" type="submit" class="btn btn-primary btn-lg">Update</button>

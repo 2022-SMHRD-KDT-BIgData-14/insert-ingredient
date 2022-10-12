@@ -4296,23 +4296,19 @@ color: red;}
     opacity: 0;
   }
    */
-
-  .img-center-style span{
-    opacity: 0;
-    position: relative;
-    /* display: block; */
-    /* z-index: 0; */
-    color: white;
-    /* text-align: center; */
-    /* vertical-align: middle; */
-  }
-  
-  @keyframes fade {
+   
+   .main-title{
+   opacity:0;
+   
+   }
+   
+    @keyframes fade {
     to {
       opacity: 1;
     }
   }
 
+ 
 /* 메인검색 */
 
 .form-group-start{
@@ -4328,17 +4324,22 @@ color: red;}
   }
 }
 
+label.upload-label01:hover {
+  background-color: #ff312d;
+}
+
+
 .form-group-start .upload-label01 {
   display: inline-block;
   position: relative;
-  /* width: 45.7%; */
+  width: 14%;
   margin-bottom: 1%;
   /* line-height: 50px;
   font-weight: bold; */
   font-size: 30px;
   /* float: right; */
   /* margin-left: 10px; */
-  padding: 8px 20px;
+  /* padding: 8px 20px; */
   color: white;
   background-color: #FF6360;
   border-radius: 50px;
@@ -4352,8 +4353,8 @@ color: red;}
 
 .form-group-start input{
   /* width: 20%; */
-  /* line-height: 3.7; */
-  font-size: 25px;
+  line-height: 2;
+  font-size: 20px;
   vertical-align: middle;
   outline: none;
 }
@@ -4367,56 +4368,100 @@ color: red;}
 /* 메인 스크롤내리기*/
 .main-down-margin{
   margin-top: 10%;
-  margin-bottom: 1%;
+  margin-bottom: 1.7%;
 }
 
-/* .main-last-margin{
-  margin-bottom: 30%;
-} */
-
-/* .down-img{
-  width: 80%;
-} */
-
-/* 글씨 부드럽게
-span {
-	opacity: 0;
+/* 메인 슬라이드 */
+/* 보여줄 구간의 높이와 넓이 설정 */
+#slideShowm{
+  width: 1500px;
+  height: 600px;
+  position: relative;
+  margin: 50px auto;
+  overflow: hidden;   
+  /*리스트 형식으로 이미지를 일렬로 
+  정렬할 것이기 때문에, 500px 밖으로 튀어 나간 이미지들은
+  hidden으로 숨겨줘야됨*/
+  /* margin-bottom: 105%; */
 }
 
-@keyframes fade {
-  to {
-    opacity: 1;
-  }
-} */
+
+.slidesm{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2000px; /* 슬라이드할 사진과 마진 총 넓이 */
+  transition: left 0.5s ease-out; 
+  /*ease-out: 처음에는 느렸다가 점점 빨라짐*/
+  /* margin-bottom: 10%; */
+}
+
+.main-slide-size{
+  width: 70%;
+}
+
+/* 첫 번째 슬라이드 가운데에 정렬하기위해
+첫번째 슬라이드만 margin-left조정 */
+.slidesm li:first-child{
+  margin-left: 100px;
+}
+
+/* 슬라이드들 옆으로 정렬 */
+.slidesm li:not(:last-child){
+  float: left;
+  margin-right: 100px;
+}
+
+.slidesm li{
+  float: left;
+}
+
+.controllerm span{
+  position:absolute;
+  background-color: transparent;
+  color: black;
+  text-align: center;
+  border-radius: 50%;
+  padding: 10px 20px;
+  top: 50%;
+  font-size: 1.3em;
+  cursor: pointer;
+}
+
+/* 이전, 다음 화살표에 마우스 커서가 올라가 있을때 */
+.controllerm span:hover{
+  background-color: rgba(128, 128, 128, 0.11);
+}
+
+.prevm{
+  left: 10px;
+}
+
+/* 이전 화살표에 마우스 커서가 올라가 있을때 
+이전 화살표가 살짝 왼쪽으로 이동하는 효과*/
+.prevm:hover{
+  transform: translateX(-10px);
+}
+
+.nextm{
+  right: 10px;
+}
+
+/* 다음 화살표에 마우스 커서가 올라가 있을때 
+이전 화살표가 살짝 오른쪽으로 이동하는 효과*/
+.nextm:hover{
+  transform: translateX(10px);
+}
+
 
 #down-img {
   /* transition: 2s; */
-  width: 50%;
+  width: 70%;
   /* height: 90%; */
   /* color: #000; */
   float: left;
-  margin-inline: 7%;
+  margin-inline: 5%;
 }
-
-/* 휠이벤트 */
-
-/* html,body {
-  margin:0; 
-  padding:0; 
-  width:100%; 
-  height:100%;
-}
-
-.box {
-  width:100%; 
-  height:100%; 
-  position:relative; 
-  color:#ffffff; 
-  font-size:24pt;
-  -ms-overflow-style: none;}
-::-webkit-scrollbar {
-  display:none;
-}  */
 
 
 
