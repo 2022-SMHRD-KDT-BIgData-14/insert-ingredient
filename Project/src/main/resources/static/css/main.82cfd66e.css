@@ -4810,7 +4810,7 @@ nav.nav-footer a{
       text-align: center;
       display: flex;
       justify-content: center;
-      margin-left: -13%;
+/*       margin-left: -13%; */
       text-decoration: none;
     }
 
