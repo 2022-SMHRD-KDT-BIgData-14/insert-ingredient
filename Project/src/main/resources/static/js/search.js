@@ -304,66 +304,6 @@ function tagList(list) {
 
 }
 
-// food tag 입력 시 초기화 후 검색
-function tagList(list) {
-	console.log("TagList : " + list)
-	console.log(typeof list)
-	$.ajax({
-		url: 'inputfoodList.do',
-		type: 'get',
-		datatype: "json",
-		data: {"list":list},
-		success: function(e) {
-			console.log("ajax : " + e)
-			console.log("foodlist 전달 성공")
-			console.log("taglist타입확인"+typeof e)
-//			Foodlist(JSON.stringify(e))
-			Foodlist(e)
-		},
-		error: function() {
-			console.log("foodlist 전달 실패")
-		}
-	})
-
-}
-
-
-
-
-function foodtagList(list) {
-	console.log("TagList : " + list)
-	console.log(typeof list)
-	$.ajax({
-		url: 'realtionList.do',
-		type: 'get',
-		datatype: "json",
-		data: {"list":list},
-		success: function(e) {
-			console.log("ajax : " + e)
-			console.log("foodlist 전달 성공")
-			console.log("taglist타입확인"+typeof e)
-//			Foodlist(JSON.stringify(e))
-			Foodlist(e)
-		},
-		error: function() {
-			console.log("foodlist 전달 실패")
-		}
-	})
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -371,17 +311,33 @@ function Foodlist(foodlist) {
 	console.log("foodlist함수 확인")
 //	console.log("relationlist출력 확인" + JSON.stringify(relationlist))
 //	console.log("relationlist타입 확인" + typeof relationlist)
-	$('.food-list').html('')
+	$('.upload-result').html('')
 	for (var i = 0; i < foodlist.length; i++) {
 	console.log("foodlist함수 for문 확인")
-		$('.food-list').append(
-			`
-			<div class = "foodlist-p">
-				<div> <img alt="none" src="${foodlist[i].food_img}" > </div>
-				<div class = "foodlist-s">"${foodlist[i].food_name}"</div>
-			</div>
-			`
+		$('.upload-result').append(
+		`
+        <div class="col-xs-12 col-md-4 section-container-spacer upload-section-line">
+          <!-- 검색결과 호버01-1 -->
+          <div class="grid-item-01">
+            <div class="gutter-sizer"></div>
+            <div class="grid-sizer-01"></div>
+            <img class="img-responsive" src="${foodlist[i].food_img}">
+            <a th:href="detail.do" class="project-description">
+              <!-- 여기에 찜 넣기 -->
+              <div class="project-text-holder-01">
+                <div class="project-text-inner-01">
+                  <h1>${foodlist[i].food_name}</h1>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+		`
 		)
+		if(i === 8){
+			console.log("if문 확인")
+			return false;
+		}
 	};
 	console.log("foodlist함수 확인2")
 }
