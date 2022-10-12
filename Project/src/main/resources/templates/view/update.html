@@ -2,28 +2,132 @@
 <!-- 타임리프 스키마 삽입 : 태그, 속성들 사용 -->
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+  <meta charset="UTF-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <meta content="description" name="description">
+  <meta name="google" content="notranslate" />
+  <meta content="Mashup templates have been developped by Orson.io team" name="author">
+
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <link href="./images/apple-icon-180x180.png" rel="apple-touch-icon">
+  <link href="./images/favicon.ico" rel="icon">
+
+
+
+  <title>Title page</title>
+
+  <link href="../css/main.82cfd66e.css" rel="stylesheet">
 </head>
+
 <body>
-	[[${session.member}]]
-	<!-- 회원정보수정 html 페이지 -->
-	<h3>[[${session.member.user_name}]]님, 임시 회원정보수정 창</h3>
-	<form th:action="@{/update.do}" method="post" th:object="${member}">
-		<input type="hidden" th:value="${session.member.user_id}" name="user_id" readonly><br>
-		PW : <input type="password" th:field = "*{user_pw}" name="user_pw" th:placeholder="${session.member.user_pw}"><br>
-		NAME : <input type="text" th:field="*{user_name}" name="user_name" th:placeholder="${session.member.user_name}"> <br><br><br>
-		<button>수정</button>
-	</form>
-		<!-- 취소버튼 클릭 시, 메인으로 이동(뒤로가기) -->
-		<button th:onclick="goMain()">취소</button>
-	
-	<script type="text/javascript">
-		/* 취소버튼 클릭 시, 메인으로 이동 함수 */
-		function goMain(){
-			location.href="goMain.do";
-		}
-	</script>
-	
+
+  <!-- Add your content of header -->
+  <header class="">
+    <div class="navbar navbar-default visible-xs">
+      <button type="button" class="navbar-toggle collapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a th:href="goMain.do" class="navbar-brand">Insert Ingredient</a>
+    </div>
+
+    <nav class="sidebar">
+      <div class="navbar-collapse" id="navbar-collapse">
+        <div class="site-header hidden-xs">
+          <a class="site-brand site-brand-size" th:href="goMain.do" title="">
+            <img class="img-responsive site-logo" alt="" src="../images/logo.png">
+            <span>Insert Ingredient</span>
+          </a>
+        </div>
+        <ul class="nav">
+			<li><a th:href="goMain.do" title="">Home</a></li>
+			<li><a th:href="goUpload.do" title="">Upload</a></li>
+			<li><a th:href="goMypage.do" title="">MyPage</a></li>
+        </ul>
+        <nav class="nav-footer">
+          <!-- <a class="nav-footer-lj" href="./join-a.html" title="">Login / Join</a> -->
+          <h5><a th:href="goLogin.do" title="">Login</a> / <a th:href="goJoin.do" title="">Join</a></h5>
+          <p>© Untitled | Website created with <a href="https://shrcampus.com/"
+              title="Beautiful Free Images">shrcampus</a></p>
+        </nav>
+      </div>
+    </nav>
+  </header>
+  <main class="" id="main-collapse">
+
+
+    <div class="row">
+      <div class="col-xs-12">
+
+        <div class="login-all">
+
+          <div class="section-container-spacer">
+            <h1>Update</h1>
+          </div>
+        </div>
+
+        <div class="login-place">
+          <div class="Sign-in">
+            <h1>Update</h1>
+          </div>  
+
+
+          <div class="section-container-spacer">
+            <form th:action="@{/update.do}" method="post" th:object="${member}" class="reveal-content">
+              <div class="row row-center">
+                  <div class="col-md-3">
+                    <div class="form-group form-group-w">
+                      <input type="hidden" th:value="${session.member.user_id}" name="user_id" readonly>
+                    <div class="form-group form-group-w">
+                      <input type="password" th:field = "*{user_pw}" name="user_pw" th:placeholder="${session.member.user_pw}">
+                    </div>
+                    <div class="form-group form-group-w">
+                      <input type="text" th:field="*{user_name}" name="user_name" th:placeholder="${session.member.user_name}">
+                    </div>
+                    <!-- <div class='v-line'></div> -->
+                    <button style="margin: 1%;" type="submit" class="btn btn-primary btn-lg">Update</button>
+                    <!-- <button type="submit" class="btn btn-primary btn-lg">Join</button> -->
+                  </div>
+              </div>
+          </div>
+        </form>
+        </div>
+      </div>
+
+
+    </div>
+    </div>
+
+
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+      navbarToggleSidebar();
+      navActivePage();
+    });
+  </script>
+
+  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID 
+
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+  ga('create', 'UA-XXXXX-X', 'auto');
+  ga('send', 'pageview');
+</script>
+
+-->
+  <script type="text/javascript" src="../js/main.85741bff.js"></script>
 </body>
+
 </html>
