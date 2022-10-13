@@ -18,8 +18,8 @@ public interface FoodMapper{
 	// 음식 상세 페이지(test)
 	public Food detail_a(Food food);
 	
-	// 음식 목록 출력하기
-	public List<Food> foodList(Food food);
+	// 최근 본 음식 목록 출력하기
+	public List<Food> recentList(Food food);
 	
 	// ingredient_name autocomplete
 	public List<Ingredient> IngredientAuto(String ingredient);

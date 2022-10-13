@@ -71,8 +71,9 @@
 
           <h2>찜한목록</h2>
           <div id="slideShow1">
+            <!-- 찜한 음식 목록 리스트로 가져오기 -->
             <ul class="slides1" th:each="list:${list}">
-              <li><img style="width: 300px;" th:src="${list.food_img}" alt=""></li>
+              <li><img style="width: 300px;" th:src="${list.food_img}" alt="음식 사진 자리임"></li>
               <!-- <li><img id="wishIMG" alt="food_img자리임" th:src="${list.food_img}"></li> -->
               <!-- <li><img style="width: 300px;" src="../images/like01.jpg" alt=""></li>
               <li><img style="width: 300px;" src="../images/img-010.jpg" alt=""></li>
@@ -91,7 +92,8 @@
           <div class="col-xs-12 col-md-6 section-container-spacer">
           <h2>최근 목록</h2>
           <div id="slideShow2">
-            <ul class="slides2">
+            <ul class="slides2" th:each="recentList:${recentList}">
+              <li><img style="width: 300px;" th:src="${recentList.food_img}" alt="최근 본 자리임"></li>
               <li><img style="width: 300px;" src="../images/img-010.jpg" alt=""></li>
               <li><img style="width: 300px;"src="../images/img-010.jpg" alt=""></li>
               <li><img style="width: 300px;"src="../images/img-010.jpg" alt=""></li>
