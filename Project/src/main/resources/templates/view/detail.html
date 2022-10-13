@@ -89,10 +89,10 @@
 
 				</div>
 				<div class="col-xs-12 col-md-6 datail-upmargin">
-					<h1>About Food</h1>
+					<!-- <h1>About Food</h1> -->
 					<div class="col-md-4 col-xs-6 form-group ">
 						<!-- 요리 이름 -->
-						<span class="form-control detail-fontsize">[[${session.Food.food_name}]]</span>
+						<h1><span class="form-control detail-fontsize">[[${session.Food.food_name}]]</span></h1>
 							
 					</div>
 					<div class="col-md-12 col-xs-12 form-group ">
@@ -100,11 +100,11 @@
 						<span style="width: 90%;" class="form-control detail-fontsize">[[${session.Food.introduce}]]</span>
 					</div>
 					<!-- 찜 버튼 -->
-					<button class="btn-like">💗</button>
+					<button type="button" class="btn-like">💗</button>
 				</div>
 			</div>
 
-			<div class="recipe-youtube">
+			<div class="recipe-youtube" style="height:100px">
 				<!-- <img src="../images/img-07.jpg" alt=""> -->
 				<!-- <textarea
 					style="vertical-align: middle; margin-left: -10%; width: 10%; font-size: 20px; resize: none;"
@@ -198,9 +198,23 @@
 	    			<p>` + article_arr[i] + `</p>`
 	    		) */
 	    		$('#cooking_order').append(
-    				`<li class="order_li"><img id="orderIMG" src="${img_arr[i]}" alt="과정 이미지 자리임">
-    				<hr><h2>` + (i+1) + `</h2>
-	    			<p>` + article_arr[i] + `</p><br></li>`
+    				/* `<li class="order_li">
+    				<img id="orderIMG" src="${img_arr[i]}" alt="과정 이미지 자리임">
+    				<hr>
+    				<h2>` + (i+1) + `</h2>
+	    			<p>` + article_arr[i] + `</p>
+	    			<br>
+	    			</li>` */
+	    			
+	    			`<li class="order_li">
+	    			<div style="display:flex">
+	    			<img style="width:400px" id="orderIMG" src="${img_arr[i]}" alt="과정 이미지 자리임">
+	    			<div style="margin:3% 0 0 3%">
+	    			<h2>` + (i+1) + `</h2>
+	    			<p>` + article_arr[i] + `</p>
+	    			</div>
+	    			</div>
+	    			</li>`
 	    		)
    			}
     		/*]]>*/
