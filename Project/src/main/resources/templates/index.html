@@ -115,10 +115,10 @@
       
    <div id="slideShowm">
       <ul class="slidesm">
-        <li><img class="main-slide-size" src="../images/음식06.jpg" alt=""></li>
-        <li><img class="main-slide-size" src="../images/음식01.jpg" alt=""></li>
-        <li><img class="main-slide-size" src="../images/음식08.jpg" alt=""></li>
-        <li><img class="main-slide-size" src="../images/음식07.jpg" alt=""></li>
+        <li><img class="main-slide-size" src="../images/음식06.jpg" alt="" > <span>텍스트 검색</span> </li>
+        <li><img class="main-slide-size" src="../images/음식01.jpg" alt=""><span>이미지 업로드</span></li>
+        <li><img class="main-slide-size" src="../images/음식08.jpg" alt=""><span>OCR 업로드</span></li>
+      <li><img class="main-slide-size" src="../images/음식07.jpg" alt=""><span>확인</span></li> 
       </ul>
       <p class="controllerm">
 
@@ -164,8 +164,8 @@
     const slideMarginm = 50; //슬라이드간의 margin 값
 
     //전체 슬라이드 컨테이너 넓이 설정
-    slidesm.style.width = '2500px'
-    // (slideWidth*2 + slideMargin) * slideCount + 'px';
+    slidesm.style.width =  (slideWidthm*2 + slideMarginm) * slideCountm + 'px';
+    
     function moveSlidem(num) {
       slidesm.style.left = -num * 400 + 'px';
       currentIdxm = num;

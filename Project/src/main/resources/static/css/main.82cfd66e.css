@@ -4246,7 +4246,7 @@ color: red;}
     left: 0;
     right: 0;
     height: 400px;
-    /* opacity: 1; */
+    opacity: 0.7; 
     background-size: cover;
     background-position: center center;
     /* width: 100%; */
@@ -4307,7 +4307,7 @@ label.upload-label01:hover {
 .form-group-start .upload-label01 {
   display: inline-block;
   position: relative;
-  width: 14%;
+ /*  width: 14%; */
   margin-bottom: 1%;
   /* line-height: 50px;
   font-weight: bold; */
@@ -4320,6 +4320,7 @@ label.upload-label01:hover {
   border-radius: 50px;
   cursor: pointer;
   /* vertical-align: middle; */
+  padding-inline: 65px;
 }
 
 .upload-label-hover:hover{
@@ -4334,7 +4335,9 @@ label.upload-label01:hover {
   outline: none;
   border-radius: 50px;
   border:none;
-  opacity:0.9;
+ /*  opacity: 1;  */
+  padding : 5px;
+  text-align: center;
 }
 
 .search-center-main{
@@ -4352,7 +4355,7 @@ label.upload-label01:hover {
 /* 메인 슬라이드 */
 /* 보여줄 구간의 높이와 넓이 설정 */
 #slideShowm{
-  width: 1500px;
+  width: 90%;
   height: 600px;
   position: relative;
   margin: 50px auto;
@@ -4845,3 +4848,8 @@ nav.nav-footer a{
   .list-icons li {
     float: left;
     margin-right: 5px; }
+
+@font-face{
+	font-family:'Karimun';
+	src:url('../fonts/Karimun.woff') format('woff');
+}    
