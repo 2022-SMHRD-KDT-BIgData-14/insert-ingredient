@@ -32,9 +32,9 @@ public class FoodController {
 
 	// 음식 이미지 클릭 시, 레시피 상세 페이지로 이동
 	@RequestMapping("/detail.do")
-	public String foodDetail(Food food, HttpSession session) {
+	public String foodDetail(Food food_seq, HttpSession session) {
 
-		Food resultF = mapper.foodDetail(food);
+		Food resultF = mapper.foodDetail(food_seq);
 		System.out.println("result : " + resultF);
 
 		// 회원 정보 세션 가져오기

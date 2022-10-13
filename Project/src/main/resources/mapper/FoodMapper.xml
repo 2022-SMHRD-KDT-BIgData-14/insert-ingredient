@@ -2,9 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.mapper.FoodMapper">
 	<!-- 음식 상세페이지 조회 -->
-	<select id="foodDetail" parameterType="com.smhrd.domain.Food" resultType="com.smhrd.domain.Food">
-		<!-- select * from food where food_seq=(select food_seq from relationship) -->
+<!-- 	<select id="foodDetail" parameterType="com.smhrd.domain.Food" resultType="com.smhrd.domain.Food">
+		select * from food where food_seq=(select food_seq from relationship)
 		select * from food where food_seq = 455
+	</select> -->
+	<!-- 음식 상세페이지 조회 -->
+	<select id="foodDetail" resultType="com.smhrd.domain.Food">
+		select * from food where food_seq=#{food_seq}
 	</select>
 	
 	<!-- 최근 본 음식 목록 출력 -->
