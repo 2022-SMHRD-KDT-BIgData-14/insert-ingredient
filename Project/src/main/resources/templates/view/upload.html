@@ -23,6 +23,7 @@
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script type="text/javascript" src="js/search.js"></script>
+  <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
   <link href="../css/main.82cfd66e.css" rel="stylesheet">
   <link href="../css/main.css" rel="stylesheet">
   <link href="../js/main.js" rel="stylesheet">
@@ -70,7 +71,19 @@
     <div class="row">
       <div class="col-xs-12 section-container-spacer">
         
-        <h1>Upload</h1>
+        <h1><span class="main-title">U</span><!-- 
+          --><span class="main-title">p</span><!-- 
+          --><span class="main-title">l</span><!-- 
+          --><span class="main-title">o</span><!-- 
+          --><span class="main-title">a</span><!-- 
+          --><span class="main-title">d</span></h1>
+          
+          <!-- 배경이미지 -->
+          <div class=" upload-Banner-bg a-Opacity is-Opacity">
+            <span class="upload-Banner-bg-img" style="background-image: url(../images/음식13.jpg);">
+            </span>
+          </div>
+          
         <!-- 식재료 업로드창 -->
         <div class="col-xs-12 form-group-load-01">
           <div class="search-center">
@@ -83,7 +96,7 @@
         </div>
 
         <!-- 비동기 엔터치면 키워드 나오는 -->
-        <div class="upload-keyword" id="result-a">
+        <div class="upload-keyword" >
           <h4>ingredient</h4>
 			<ul id="tag-list">
 		  	</ul>
@@ -98,8 +111,11 @@
       </div>
     </div>
     </div>
-    <div class="moveTopBtn">Top</div>
+  <div class="list">
 
+      <div class="moveTopBtn">Top</div>
+
+    </div>
   </main>
 
   <script>
@@ -142,6 +158,19 @@
       newImage.src = URL.createObjectURL(file);
     };
   </script>
+  
+   <!-- 글씨부드럽게나타남 -->
+  <script>
+    const introText = document.querySelectorAll('.main-title')
+
+    window.onload = () => {
+      let timer = 100;
+      introText.forEach((item) => {
+        item.style.animation = `fade 500ms ${(timer += 80)}ms forwards`;
+      });
+    };
+  </script>
+  
   <!-- 비동기 검색 -->
   <!-- 방식01 엔터치면 나오기-->
 <!--   <script>
@@ -215,9 +244,9 @@ $(document).ready(function(){
   }
 
   // 처음에 페이지 하단으로 스크롤 위치 지정
-  window.onload = () => {
+ /*  window.onload = () => {
     window.scrollTo({ top: document.body.scrollHeight });
-  }
+  } */
 </script>
 
   <script type="text/javascript" src="../js/main.85741bff.js"></script>
