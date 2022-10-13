@@ -4258,7 +4258,7 @@ color: red;}
 }
 
 .main-name-size{
-  font-size: 900%;
+  font-size: 800%;
   font-weight: bold;
   color: #000;
 }
@@ -4276,12 +4276,17 @@ color: red;}
   .new-11{
     line-height: 1.2;
     margin-top: -2%;
-    font-size: initial;
+    font-size: x-large;
     margin-left: 3%;
     display: block;
     position: absolute;
     
   }
+  
+  .new-11> p+p{
+  	color:#ff312d;
+  }
+  
   
   .newmainBanner-bg-img {
     display: block;
