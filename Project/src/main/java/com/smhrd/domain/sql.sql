@@ -83,7 +83,7 @@ foreign key(food_seq) references food (food_seq)
 )
 
 -- wishlist 테이블 조회
-select * from wishlist
+select * from wishlist where user_id='dd'
 
 -- food_seq가 1인 컬럼 삭제
 delete from wishlist where user_id='dd'

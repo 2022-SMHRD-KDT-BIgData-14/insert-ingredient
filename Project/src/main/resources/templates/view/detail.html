@@ -20,7 +20,9 @@
 
 <title>Title page</title>
 <link href="../css/main.82cfd66e.css" rel="stylesheet">
+<link href="../css/main.css" rel="stylesheet">
 </head>
+
 <script src="//code.jquery.com/jquery.min.js"></script>
 
 <body>
@@ -111,19 +113,24 @@
 					이 브라우저는 유튜브를 지원하지 않습니다.</iframe>	
 			</div>
 
-			<div class="recipe-order">
+			<!-- <div class="recipe_order"> -->
+			<!-- <div class="recipe-order"> -->
 				<!-- for문 돌려서 과정 이미지랑 글 가져오기 -->
-				<div id="processIMG" class="col-xs-12 col-md-6 datail-upmargin">
-					<!-- 요리 과정 이미지 -->
-					<!-- <img class="img-responsive detail-img-size" alt=""
+				<!-- <div id="process"> -->
+				<h2>Cooking Orders</h2>
+				<ul id="cooking_order"></ul>
+				<!-- <div id="processIMG" class="col-xs-12 col-md-6 datail-upmargin">
+					요리 과정 이미지
+					<img class="img-responsive detail-img-size" alt=""
 						th:src="@{https://recipe1.ezmember.co.kr/cache/recipe/2019/12/05/953857837fa18d0227096d79dc2af0621.jpg}">
-						[[${session.Food.process_img}]] -->
+						[[${session.Food.process_img}]]
 					<br>
 				</div>
 				<div id="processArticle" class="col-md-6 recipe-order02">
-					<!-- 요리 과정 글 공간(자바스크립트) -->
-				</div>
-			</div>
+					요리 과정 글 공간(자바스크립트)
+				</div> -->
+				<!-- </div> -->
+			<!-- </div> -->
 		</div>
 		<div class="moveTopBtn">Top</div>
 	</main>
@@ -138,9 +145,9 @@
 	<!-- 상세찜 -->
 	<script>
 	    $(".btn-like").click(function () {
-	      $(this).toggleClass("done");
 	      /* 찜 기능 넣어봄 */
 	      location.href="saveWish.do";
+	      $(this).toggleClass("done");
 	    })
     </script>
   
@@ -174,7 +181,7 @@
     		const img_arr = str_img.split("@");
     		const article_arr = str_article.split("@");
     		
-    		console.log("6번째 이미지" + img_arr[6])
+    		console.log("0번째 이미지" + img_arr[0])
     		console.log("이미지 배열 길이" + img_arr.length)
     		
     		console.log("6번째 글" + article_arr[6])
@@ -182,13 +189,18 @@
     		
     		/* for문 돌려서 하나씩 넣기 */
    			for(let i = 0; i<img_arr.length-1; i++){
-	    		$('#processIMG').append(
+	    		/* $('#processIMG').append(
 	    			`<img src="${img_arr[i]}" alt="과정 이미지 자리임"><br>`
 	    			
 	    		);
 	    		$('#processArticle').append(
 	    			`<h2>` + (i+1) + `</h2>
 	    			<p>` + article_arr[i] + `</p>`
+	    		) */
+	    		$('#cooking_order').append(
+    				`<li class="order_li"><img id="orderIMG" src="${img_arr[i]}" alt="과정 이미지 자리임">
+    				<hr><h2>` + (i+1) + `</h2>
+	    			<p>` + article_arr[i] + `</p><br></li>`
 	    		)
    			}
     		/*]]>*/
