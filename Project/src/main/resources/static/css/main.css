@@ -578,13 +578,23 @@ display: block; }
 }
 #cooking_order{
 	list-style: none;
-	margin:0px;
+	/* margin:0px;
 	padding:0px;
 	
-	max-width: 550px;
-	width:100%;
+	width:550px; */
 }
 .order_li{
+	/* max-width: 550px; */
+	list-style: none;
+	/* display:inline-block;
+	margin: 0 12px 40px 0; */
+	padding:1%;
+	vertical-align: top;
+	position: relative;
+	width:100%;
+	margin-bottom: 5%;
+}
+.btn-like{
 	float:left;
-	display:inline-block;
+	padding-left: 3%;
 }
