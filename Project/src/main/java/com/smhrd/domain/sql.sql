@@ -138,3 +138,4 @@ show columns from relationship
 
 
 -- 메롱~
+select * from food

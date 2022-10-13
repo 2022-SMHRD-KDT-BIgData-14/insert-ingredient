@@ -54,7 +54,7 @@ $(document).ready(
 		// 태그를 추가한다.
 		function addTag(value) {
 			tag[counter] = value; // 태그를 Object 안에 추가
-			counter++; // counter 증가 삭제를 위한 del-btn 의 고유 id 가 된다.
+			counter++; // counter 증가 삭제를 위한 del-btn의 고유 id 가 된다.
 		}
 
 		// 최종적으로 서버에 넘길때 tag 안에 있는 값을 array type 으로 만들어서 넘긴다.
@@ -72,8 +72,6 @@ $(document).ready(
 				"keyup",
 				function(e) {
 					var ingredient = $(this);
-					// console.log("seq찾기" + ingredient_seq)
-					/* console.log("keypress"); */
 
 					// input 에 focus 되있을 때 엔터 및 스페이스바 입력시 구동
 					if (e.key === "Enter"
@@ -113,12 +111,7 @@ $(document).ready(
 						var taglist = {
 							"taglist" : list
 						}
-						// foodlist
-						//tagList(list)
-						//tagList(JSON.stringify(list))
 						tagList(JSON.stringify(taglist))
-						// tagList(taglist)
-
 					}
 				});
 				
@@ -129,9 +122,6 @@ $(document).ready(
 				"keyup",
 				function(e) {
 					var food = $(this);
-					// console.log("seq찾기" + ingredient_seq)
-					/* console.log("keypress"); */
-
 					// input 에 focus 되있을 때 엔터 및 스페이스바 입력시 구동
 					if (e.key === "Enter"
 						|| e.keyCode == 32) {
@@ -170,24 +160,15 @@ $(document).ready(
 						var taglist = {
 							"taglist" : list
 						}
-						// foodlist
-						//tagList(list)
-						//tagList(JSON.stringify(list))
 						tagList(JSON.stringify(taglist))
-						// tagList(taglist)
-
 					}
 				});
 
-		// 삭제 버튼
 		// 삭제 버튼은 비동기적 생성이므로 document 최초 생성시가 아닌 검색을 통해 이벤트를 구현시킨다.
 		$(document).on("click", ".del-btn", function(e) {
 			var index = $(this).attr("idx");
 			tag[index] = "";
 			$(this).parent().remove();
-			// foodlist
-			// list = JSON.stringify(tag)
-			
 			
 			for(var i=0; i<list.length; i++){
 				if(list[i] === ingredient_seq){
@@ -198,9 +179,7 @@ $(document).ready(
 			var taglist = {
 				"taglist" : list
 			}
-			//tagList(JSON.stringify(list))
 			tagList(JSON.stringify(taglist))
-			//tagList(list)
 		});
 
 
@@ -247,35 +226,9 @@ $(function() {
 		select: function(event, ui) {
 			console.log("selected : " + $(this).val());
 			console.log("food_seq출력" + ui.item.food_name)
-			//ingredient_seq = ui.item.ingredient_seq
 		}
 	});
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -306,7 +259,6 @@ function tagList(list) {
 
 
 
-
 function Foodlist(foodlist) {
 	console.log("foodlist함수 확인")
 //	console.log("relationlist출력 확인" + JSON.stringify(relationlist))
@@ -316,13 +268,14 @@ function Foodlist(foodlist) {
 	console.log("foodlist함수 for문 확인")
 		$('.upload-result').append(
 		`
-        <div class="col-xs-12 col-md-4 section-container-spacer upload-section-line">
+        <div style="cursor:pinter;" class="col-xs-12 col-md-4 section-container-spacer upload-section-line">
+         
           <!-- 검색결과 호버01-1 -->
           <div class="grid-item-01">
             <div class="gutter-sizer"></div>
             <div class="grid-sizer-01"></div>
             <img class="img-responsive" src="${foodlist[i].food_img}">
-            <a th:href="detail.do" class="project-description">
+            <a href="detail.do?food_seq=${foodlist[i].food_seq}" class="project-description">
               <!-- 여기에 찜 넣기 -->
               <div class="project-text-holder-01">
                 <div class="project-text-inner-01">
