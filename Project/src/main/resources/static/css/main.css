@@ -576,6 +576,7 @@ display: block; }
 #orderIMG{
 	max-width:100%;height:auto
 }
+/* ul태그 */
 #cooking_order{
 	list-style: none;
 	/* margin:0px;
@@ -583,6 +584,7 @@ display: block; }
 	
 	width:550px; */
 }
+/* li태그 */
 .order_li{
 	/* max-width: 550px; */
 	list-style: none;
@@ -594,6 +596,7 @@ display: block; }
 	width:100%;
 	margin-bottom: 5%;
 }
+/* 찜 버튼 */
 .btn-like{
 	float:left;
 	padding-left: 3%;
