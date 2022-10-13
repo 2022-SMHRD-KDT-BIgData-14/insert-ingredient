@@ -3911,7 +3911,7 @@ a.badge:hover, a.badge:focus {
   /* text-align: center; */
   display: flex;
   justify-content: center;
-  /* align-items: center; */
+  align-items: center;
   width: inherit;
 }
 
@@ -3923,14 +3923,20 @@ a.badge:hover, a.badge:focus {
 
 .search-center>#name{
   font-size: 20px;
-  width: 20%;
+  /* width: 20%; */
   outline: none;
+  line-height: 2.3;
+  text-align: center;
+  border-radius: 50px;
+  border: none;
 }
 
 .upload-label-pd{
   margin-left: 8px;
 }
-  
+
+
+
   /* 업로드키워드 닫기부분 */
   /* .image-upload{
     float: left;
@@ -3961,8 +3967,18 @@ a.badge:hover, a.badge:focus {
 .upload-keyword{
   display: inline-flex;
   align-items: center;
-  margin-inline: 31.5%;
+  margin-inline: 29%;
+  position: inherit;
  
+}
+
+.upload-keyword h4{
+	color: white;
+}
+
+.upload-keyword-font{
+  color: white;
+  font-size: 25px;
 }
 
 #btn1{
@@ -3986,6 +4002,35 @@ a.badge:hover, a.badge:focus {
     padding-right: 28px;
     width: fit-content;
     margin-left: 10px;
+}
+
+/* 뒷배경 */
+
+.upload-Banner-bg-img {
+  display: block;
+  position: absolute;
+  top: 93px;
+  bottom: 25%;
+  left: 0;
+  right: 0;
+  height: 400px;
+  opacity: 0.7;
+  background-size: cover;
+  background-position: center center;
+  width: auto;
+}
+
+/* .a-Opacity.is-Opacity{
+  opacity: 1;
+}
+ */
+.upload-Banner-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  line-height: 0;
 }
 
   /* 업로드결과레시피 */
@@ -4635,6 +4680,28 @@ li{
   margin-bottom: 2rem;
   margin-left: 1rem;
   font-size: 1.5rem;
+}
+
+.moveTopBtn {
+  width: 4.4rem;
+  height: 4.4rem;
+  background: #000;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: .2s;
+  color: #fff;
+  font-size: initial;
+}
+
+.moveTopBtn:hover {
+  color: white;
+  background: #ff6360;
 }
 
 
