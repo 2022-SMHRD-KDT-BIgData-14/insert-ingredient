@@ -22,6 +22,7 @@
   <link href="../css/main.82cfd66e.css" rel="stylesheet">
   <link href="../js/main.js" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
 <body>
@@ -68,12 +69,12 @@
         <h1>[[${session.member.user_name}]]님, MyPage</h1>
         <!-- 찜 -->
         <div class="col-xs-12 col-md-6 section-container-spacer ">
-
+		<div class="col-xs-6">
           <h2>찜한목록</h2>
           <div id="slideShow1">
             <!-- 찜한 음식 목록 리스트로 가져오기 -->
             <ul class="slides1" th:each="list:${list}">
-              <li><img style="width: 300px;" th:src="${list.food_img}" alt="음식 사진 자리임"></li>
+              <li><img style="width: 300px;" class="my-slide-00" th:src="${list.food_img}" alt="음식 사진 자리임"></li>
               <!-- <li><img id="wishIMG" alt="food_img자리임" th:src="${list.food_img}"></li> -->
               <!-- <li><img style="width: 300px;" src="../images/like01.jpg" alt=""></li>
               <li><img style="width: 300px;" src="../images/img-010.jpg" alt=""></li>
@@ -89,17 +90,17 @@
             </p>
           </div>
 
-          <div class="col-xs-12 col-md-6 section-container-spacer">
+          
           <h2>최근 목록</h2>
           <div id="slideShow2">
             <ul class="slides2" th:each="recentList:${recentList}">
-              <li><img style="width: 300px;" th:src="${recentList.food_img}" alt="최근 본 자리임"></li>
-              <li><img style="width: 300px;" src="../images/img-010.jpg" alt=""></li>
-              <li><img style="width: 300px;"src="../images/img-010.jpg" alt=""></li>
-              <li><img style="width: 300px;"src="../images/img-010.jpg" alt=""></li>
-              <li><img style="width: 300px;"src="../images/img-010.jpg" alt=""></li>
-              <li><img style="width: 300px;"src="../images/img-010.jpg" alt=""></li>
-              <li><img style="width: 300px;"src="../images/img-010.jpg" alt=""></li>
+              <li><img style="width: 300px;" class="my-slide-00" th:src="${recentList.food_img}" alt="최근 본 자리임"></li>
+              <li><img style="width: 300px;" class="my-slide-00" src="../images/음식01" alt=""></li>
+              <li><img style="width: 300px;" class="my-slide-00" src="../images/음식01" alt=""></li>
+              <li><img style="width: 300px;" class="my-slide-00" src="../images/음식01" alt=""></li>
+              <li><img style="width: 300px;" class="my-slide-00" src="../images/음식01" alt=""></li>
+              <li><img style="width: 300px;" class="my-slide-00" src="../images/음식01" alt=""></li>
+              <li><img style="width: 300px;" class="my-slide-00" src="../images/음식01" alt=""></li>
             </ul>
             <p class="controller2">
 <!-- 
@@ -110,6 +111,12 @@
             </p>
           </div>
           </div>
+          
+            <div class="col-xs-6 my-slide-big01">
+          <img class="click-img" src="./assets/images/음식01.jpg" alt="">
+        </div>
+          
+          
         </div>
 
       </div>
@@ -232,6 +239,22 @@
     });
 
   </script>
+  
+  <!-- 옆 화면에 띄우기-->
+<script>
+  const bigimg = document.querySelectorAll('my-slide-00');
+// src 경로를 따로 빼서 확대화면에 넣어주기
+  $('.my-slide-00').click(function(){
+    let url = this.getAttribute("src");
+
+    $('.click-img').attr("src", url)
+     
+  })
+  
+ $('.click-img').click(function(){
+	  $('.click-img').hide()
+  })
+</script>
 
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID 
 

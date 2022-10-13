@@ -4467,7 +4467,7 @@ li{
   list-style-type: none;
 }
 
-/* 찜 */
+/* 찜 슬라이드 */
 /* 보여줄 구간의 높이와 넓이 설정 */
 #slideShow1{
   width: 500px;
@@ -4478,6 +4478,7 @@ li{
   /*리스트 형식으로 이미지를 일렬로 
   정렬할 것이기 때문에, 500px 밖으로 튀어 나간 이미지들은
   hidden으로 숨겨줘야됨*/
+  /* margin-bottom: 105%; */
 }
 
 
@@ -4488,6 +4489,7 @@ li{
   width: 2000px; /* 슬라이드할 사진과 마진 총 넓이 */
   transition: left 0.5s ease-out; 
   /*ease-out: 처음에는 느렸다가 점점 빨라짐*/
+  /* margin-bottom: 10%; */
 }
 
 /* 첫 번째 슬라이드 가운데에 정렬하기위해
@@ -4635,29 +4637,27 @@ li{
   font-size: 1.5rem;
 }
 
-.moveTopBtn {
-  width: 4.4rem;
-  height: 4.4rem;
-  background: #000;
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+/* 이미지 클릭시 확대 */
+
+.my-slide-00{
   cursor: pointer;
-  border-radius: 50%;
-  transition: .2s;
-  color: #fff;
-  font-size: initial;
 }
 
-.moveTopBtn:hover {
-  color: white;
-  background: #ff6360;
+/* .my-slide-big01{
+  width: 33%;
+  display: none;
+  visibility: hidden;
+} */
+
+.click-img{
+	width: 500px;
+	height: auto;
+	
 }
 
 /* 여기까지 */
+
 
 
 /* 로그인 */
