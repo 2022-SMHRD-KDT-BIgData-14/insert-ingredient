@@ -183,7 +183,8 @@
     		/* for문 돌려서 하나씩 넣기 */
    			for(let i = 0; i<img_arr.length-1; i++){
 	    		$('#processIMG').append(
-	    			`<img th:src="${img_arr[i]}" alt="과정 이미지 자리임"><br>`,
+	    			`<img src="${img_arr[i]}" alt="과정 이미지 자리임"><br>`
+	    			
 	    		);
 	    		$('#processArticle').append(
 	    			`<h2>` + (i+1) + `</h2>
