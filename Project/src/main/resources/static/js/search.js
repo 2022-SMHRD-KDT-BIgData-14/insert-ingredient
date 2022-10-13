@@ -235,31 +235,6 @@ $(function() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function tagList(list) {
 	console.log("TagList : " + list)
 	console.log(typeof list)
@@ -284,7 +259,6 @@ function tagList(list) {
 
 
 
-
 function Foodlist(foodlist) {
 	console.log("foodlist함수 확인")
 //	console.log("relationlist출력 확인" + JSON.stringify(relationlist))
@@ -294,13 +268,14 @@ function Foodlist(foodlist) {
 	console.log("foodlist함수 for문 확인")
 		$('.upload-result').append(
 		`
-        <div class="col-xs-12 col-md-4 section-container-spacer upload-section-line">
+        <div style="cursor:pinter;" class="col-xs-12 col-md-4 section-container-spacer upload-section-line">
+         
           <!-- 검색결과 호버01-1 -->
           <div class="grid-item-01">
             <div class="gutter-sizer"></div>
             <div class="grid-sizer-01"></div>
             <img class="img-responsive" src="${foodlist[i].food_img}">
-            <a th:href="detail.do" class="project-description">
+            <a href="detail.do?food_seq=${foodlist[i].food_seq}" class="project-description">
               <!-- 여기에 찜 넣기 -->
               <div class="project-text-holder-01">
                 <div class="project-text-inner-01">
