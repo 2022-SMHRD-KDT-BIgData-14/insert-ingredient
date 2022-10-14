@@ -39,7 +39,46 @@ $(function() {
 	});
 });
 
+// 음식 검색
+$(function() {
+	$('.insert-start').autocomplete({
+		source: function(request, response) {
+			console.log(request.term)
+			$.ajax({
+				url: 'ingredientAuto.do',
+				type: 'get',
+				datatype: "json",
+				data: {
+					ingredient: request.term
+				},
+				success: function(ingredient_name) {
 
+					console.log(ingredient_name)
+
+					response($.map(ingredient_name, function(item) {
+						return {
+							label: item.ingredient_name,
+							value: item.ingredient_name,
+							ingredient_seq: item.ingredient_seq
+						}
+					}))
+				},
+				error: function(e) {
+					alert("error");
+				}
+			});
+
+		},
+		autoFocus: true,
+		minLength: 2,
+		delay: 100,
+		select: function(event, ui) {
+			console.log("selected : " + $(this).val());
+			console.log("ingredient_seq출력" + ui.item.ingredient_seq)
+			ingredient_seq = ui.item.ingredient_seq
+		}
+	});
+});
 
 
 var list = [];

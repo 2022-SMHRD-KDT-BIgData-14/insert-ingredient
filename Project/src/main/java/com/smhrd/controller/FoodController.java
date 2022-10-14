@@ -89,66 +89,66 @@ public class FoodController {
 	
 	
 	// -------------------------------------------------------------------------
-
+	
+	// ajax 통신을 위한 restcontroller
 	@RestController
 	public class ListController {
 		@Autowired
 		private FoodMapper mapper;
 
-		// mainpage food autocomplete
+		// main.html food autocomplete
 		@RequestMapping("/foodAuto.do")
 		public List<Food> FoodAuto(String food) {
-			System.out.println("controller 전달 food" + food);
 			
 			List<Food> food_name = mapper.FoodAuto(food);
 			
 			return food_name;
 		}
 		
+		// upload.html ingredient autocomplete
 		@RequestMapping("/ingredientAuto.do")
 		public List<Ingredient> IngredientAuto(String ingredient) {
-			System.out.println("ingredient출력" + ingredient);
 
 			List<Ingredient> ingredient_name = mapper.IngredientAuto(ingredient);
 
 			return ingredient_name;
 		}
-
+		
+		// upload.html taglist를 통한 foodlist출력
 		@RequestMapping("/realtionList.do")
 		public List<Food> RelationList(String list, Model model) {
-
-			System.out.println("list출력" + list);
-			System.out.println("list타입출력" + list.getClass().getName());
-
+			
+			// Json 파싱
 			JsonParser parser = new JsonParser();
 			JsonElement json = parser.parse(list).getAsJsonObject().get("taglist");
-
-			String[] chList = json.toString().replace("[", "").replace("]", "").replace("'", "").replace("\"", "")
-					.split(",");
+			
+			// 불필요한 string 제거
+			String[] chList = json.toString()
+								  .replace("[", "").replace("]", "").replace("'", "").replace("\"", "").split(",");
 
 			ArrayList<Integer> intList = new ArrayList<Integer>();
-
+			
+			// 정제한 요소 intList에 담기
 			for (String str : chList) {
 				intList.add(Integer.parseInt(str));
-				System.out.println("출력확인 : " + (Integer.parseInt(str)));
 			}
+			
 			ArrayList<Relationship> relationlist;
-
-			System.out.println(intList.size());
-
+			
+			// 조합 가능한 음식 목록 찾기
 			relationlist = (ArrayList<Relationship>) mapper.RelationList(new FoodVO(intList.size(), intList));
-
-			System.out.println(relationlist.size());
 
 			intList.clear();
 
 			for (int i = 0; i < relationlist.size(); i++) {
-				System.out.println("개별 food_seq 출력 확인" + relationlist.get(i).getFood_seq());
 				intList.add(relationlist.get(i).getFood_seq());
 			}
+			
+			// 조합 가능한 음식 목록의 column정보를 모두 가져와 return
 			List<Food> foodlist = null;
-			if (intList.size() != 0)
+			if (intList.size() != 0) {
 				foodlist = mapper.FoodList(intList);
+			}
 
 			return foodlist;
 

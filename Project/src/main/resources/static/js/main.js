@@ -1,23 +1,23 @@
 
 /* 업로드 페이지로 이동 함수 */
-function goUpload(){
-	location.href="goUpload.do";
+function goUpload() {
+	location.href = "goUpload.do";
 }
 
 /* 메인 페이지로 이동 함수 */
-function goMain(){
-	location.href="goMain.do";
+function goMain() {
+	location.href = "goMain.do";
 }
 
 /* 마이페이지로 이동 함수 */
-function goMypage(){
-	location.href="goMypage.do";
+function goMypage() {
+	location.href = "goMypage.do";
 }
 
 
 /* 임시 메인으로 이동 함수 */
-function goMain_a(){
-	location.href="goMain_a.do";
+function goMain_a() {
+	location.href = "goMain_a.do";
 }
 
 // 음식 검색
@@ -57,6 +57,14 @@ $(function() {
 		minLength: 2,
 		delay: 100,
 		select: function(event, ui) {
+			$(".insert-start").on("keyup", function(e) {
+				// input 에 focus 되있을 때 엔터 입력시 구동
+				if (e.key === "Enter") {
+					food_seq = ui.item.food_seq
+					location.href = "detail.do?food_seq=" + food_seq
+
+				}
+			})
 		}
 	});
 });
