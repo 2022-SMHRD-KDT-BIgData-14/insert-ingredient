@@ -276,7 +276,7 @@ function Foodlist(foodlist) {
           <div class="grid-item-01">
             <div class="gutter-sizer"></div>
             <div class="grid-sizer-01"></div>
-            <img class="img-responsive" src="${foodlist[i].food_img}">
+            <img class="img-responsive upload-print-img" src="${foodlist[i].food_img}">
             <a href="detail.do?food_seq=${foodlist[i].food_seq}" class="project-description">
               <!-- 여기에 찜 넣기 -->
               <div class="project-text-holder-01">
