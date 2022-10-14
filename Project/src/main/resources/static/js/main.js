@@ -21,16 +21,19 @@ function goMain_a(){
 }
 
 // 음식 검색
+var food_name;
+var food_seq;
+
 $(function() {
 	$('.insert-start').autocomplete({
 		source: function(request, response) {
 			console.log(request.term)
 			$.ajax({
-				url: '.do',
+				url: 'foodAuto.do',
 				type: 'get',
 				datatype: "json",
 				data: {
-					ingredient: request.term
+					food: request.term
 				},
 				success: function(food_name) {
 
@@ -54,9 +57,6 @@ $(function() {
 		minLength: 2,
 		delay: 100,
 		select: function(event, ui) {
-			console.log("selected : " + $(this).val());
-			console.log("food_seq출력" + ui.item.food_seq)
-			food_seq = ui.item.food_seq
 		}
 	});
 });
