@@ -4419,7 +4419,7 @@ label.upload-label01:hover {
 /* 메인 슬라이드 */
 /* 보여줄 구간의 높이와 넓이 설정 */
 #slideShowm{
-  width: 90%;
+  width: 62%;
   height: 600px;
   position: relative;
   margin: 50px auto;
@@ -4441,20 +4441,48 @@ label.upload-label01:hover {
   /* margin-bottom: 10%; */
 }
 
-.main-slide-size{
-  width: 70%;
+@media (max-width:1920px){
+  .main-slide-size{
+    width: 50%;
+    /* height: 20%; */
+  }
+  #slideShowm{
+    width: 64%;
+    /* height: 233px; */
+  }
+  .slide-text-line{
+    /* width: 100%; */
+    /* font-size: 50px; */
+    display: inline-block;
+    margin-left: 14px;
+    vertical-align: top;
+    color: #000;
+    margin-top: 20px;
+  }
+  .slide-text-line>span+span{
+    width: 99%;
+    font-size: 35px;
+    display: block;
+  }
+  .slide-text-line>span{
+    /* width: 100%; */
+    font-size: 80px;
+    /* display: block; */
+  }
+
 }
+
 
 /* 첫 번째 슬라이드 가운데에 정렬하기위해
 첫번째 슬라이드만 margin-left조정 */
 .slidesm li:first-child{
-  margin-left: 100px;
+  margin-left: 70px;
 }
 
 /* 슬라이드들 옆으로 정렬 */
 .slidesm li:not(:last-child){
   float: left;
-  margin-right: 100px;
+  margin-right: 50px;
 }
 
 .slidesm li{
