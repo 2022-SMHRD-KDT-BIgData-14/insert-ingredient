@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -67,7 +68,7 @@ public class FoodController {
 	//}
 
 	// 최근 본 음식 목록 출력
-	@RequestMapping("recentList.co")
+	@RequestMapping("recentList.do")
 	public @ResponseBody List<Food> recentList(Member mem, Food food, HttpSession session){
 		List<Food> recentList = mapper.recentList(food);
 		
@@ -82,6 +83,11 @@ public class FoodController {
 	// Member member = (Member) session.getAttribute("member");
 	// Food food = (Food) session.getAttribute("Food");
 	// }
+	
+	// 이미지 업로드
+	// @PostMapping("http://127.0.0.1:5000/fileUpload")
+	
+	
 	// -------------------------------------------------------------------------
 	
 	// ajax 통신을 위한 restcontroller

@@ -87,13 +87,16 @@
         <div class="col-xs-12 form-group-load-01">
           <div class="search-center">
 	        <input type="text" id="name" autofocus placeholder="insert ingredient">
-          	<form class="upload-form-images" action = "http://127.0.0.1:5000/fileUpload" method = "POST"
-              enctype = "multipart/form-data">
-	            <input style="display: none;" name="ingredient_img" type="file" class="btn btn-primary btn-lg search-center-01" id="chooseFile02">
-	            <input style="display: none;" name="receipt_img" type="file" class="btn btn-primary btn-lg search-center-01" id="chooseFile02">
+          	<!-- <form class="upload-form-images" action = "http://127.0.0.1:5000/fileUpload" method = "POST"
+              enctype = "multipart/form-data"> -->
+                <form class="upload-form-images">
+	            <input style="display: none;" name="ingredient_img" type="file" class="btn btn-primary btn-lg search-center-01" id="chooseFile02" accept="image/*" onchange="loadFile(this)">
+	            <input style="display: none;" type="file" class="btn btn-primary btn-lg search-center-01" id="chooseFile02">
 	            <label class="btn btn-primary btn-lg upload-label-pd" for="chooseFile02">Ingredient IMG</label>
 	            <label class="btn btn-primary btn-lg upload-label-pd" for="chooseFile02">Receipt IMG</label> 
-            </form>
+				<button onclick="uploadImages()" type="submit">Save</button>
+            	</form>
+            <!-- </form> -->
           </div>
         </div>
 
@@ -252,6 +255,38 @@ $(document).ready(function(){
 </script>
 
   <script type="text/javascript" src="../js/main.85741bff.js"></script>
+
+<!-- 플라스크 -->
+<script type="text/javascript">
+
+function uploadImages(ingredient_img){
+	
+	var formData = new FormData();
+	formData.append("img", ingredient_img)
+	
+	$.ajax({
+		type:'post',
+		url:'http://127.0.0.1:5000/fileUpload',
+		data:formData,
+		/* dataType:'json', */
+		contentType : false,
+        processData : false,
+		/* success:Foodlist(), */
+		success:function(){alert('성공되라고')},
+		/* function success(data){
+			
+			console.log(data)
+			alert(data)
+			// 성공은 잘 됨 -> 성공했을 때 실행할 함수 적기
+			
+		}, */
+		
+		error:function(){alert('플라스크 요청 실패임')}
+	})
+}
+
+
+</script>
 
 </body>
 
