@@ -601,3 +601,8 @@ display: block; }
 	float:left;
 	padding-left: 3%;
 }
+
+/* 세령 -> upload-form-images*/
+.upload-form-images{
+	padding-top:0;
+}
