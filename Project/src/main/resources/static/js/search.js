@@ -44,10 +44,10 @@ $(function() {
 });
 
 
+var list = [];
 // 식재료 태그 함수
 $(document).ready(
 	function() {
-		var list = [];
 		var tag = {};
 		var counter = 0;
 
@@ -97,21 +97,22 @@ $(document).ready(
 									.append(
 										"<li class='tag-item'>"
 										+ tagValue
-										+ "<span class='del-btn' idx='" + counter + "'>x</span></li>");
+										+ "<span class='del-btn' idx='" + counter + "' name='"+ ingredient_seq +"'>x</span></li>");
 								addTag(tagValue);
 								ingredient.val("");
+
+								list.push(ingredient_seq)
+								var taglist = {
+									"taglist" : list
+								}
+								tagList(JSON.stringify(taglist))
+								
 							} else {
 								alert("Duplicate Ingredient");
 							}
 						}
 						e.preventDefault(); // SpaceBar 시 빈공간이 생기지 않도록 방지
 						
-						// list = JSON.stringify(tag)
-						list.push(ingredient_seq)
-						var taglist = {
-							"taglist" : list
-						}
-						tagList(JSON.stringify(taglist))
 					}
 				});
 				
@@ -166,20 +167,41 @@ $(document).ready(
 
 		// 삭제 버튼은 비동기적 생성이므로 document 최초 생성시가 아닌 검색을 통해 이벤트를 구현시킨다.
 		$(document).on("click", ".del-btn", function(e) {
+			console.log("삭제 후 list확인" + list)
+			console.log("list확인" + typeof list)
 			var index = $(this).attr("idx");
-			tag[index] = "";
-			$(this).parent().remove();
+			var name = $(this).attr("name");
+			console.log("name확인"+name)
 			
-			for(var i=0; i<list.length; i++){
-				if(list[i] === ingredient_seq){
-					list.splice(i, ingredient_seq);
-					i--;
+				
+			if(list.length==1){
+				for(var i=0; i<list.length; i++){
+					if(list[i] == name){
+						list.splice(i, 1);
+						i--;
+					}
 				}
+				
+				$('.upload-result').html('')
+				$(this).parent().remove();
+				return false
+			}else{
+				for(var i=0; i<list.length; i++){
+					if(list[i] == name){
+						list.splice(i, 1);
+						i--;
+					}
+				}
+				
+				var taglist = {
+					"taglist" : list
+				}
+	
+				tagList(JSON.stringify(taglist))
+				tag[index] = "";
+				$(this).parent().remove();
 			}
-			var taglist = {
-				"taglist" : list
-			}
-			tagList(JSON.stringify(taglist))
+			console.log("삭제 후 list확인" + list)
 		});
 
 
