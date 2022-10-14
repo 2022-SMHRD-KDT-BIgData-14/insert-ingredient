@@ -20,7 +20,43 @@ function goMain_a(){
 	location.href="goMain_a.do";
 }
 
+// 음식 검색
+$(function() {
+	$('.insert-start').autocomplete({
+		source: function(request, response) {
+			console.log(request.term)
+			$.ajax({
+				url: '.do',
+				type: 'get',
+				datatype: "json",
+				data: {
+					ingredient: request.term
+				},
+				success: function(food_name) {
 
+					console.log(food_name)
 
+					response($.map(food_name, function(item) {
+						return {
+							label: item.food_name,
+							value: item.food_name,
+							food_seq: item.food_seq
+						}
+					}))
+				},
+				error: function(e) {
+					alert("error");
+				}
+			});
 
-
+		},
+		autoFocus: true,
+		minLength: 2,
+		delay: 100,
+		select: function(event, ui) {
+			console.log("selected : " + $(this).val());
+			console.log("food_seq출력" + ui.item.food_seq)
+			food_seq = ui.item.food_seq
+		}
+	});
+});

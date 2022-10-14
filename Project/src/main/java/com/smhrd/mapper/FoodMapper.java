@@ -21,6 +21,9 @@ public interface FoodMapper{
 	// 최근 본 음식 목록 출력하기
 	public List<Food> recentList(Food food);
 	
+	// food_name autocomplete
+	public List<Food> FoodAuto(String food);
+	
 	// ingredient_name autocomplete
 	public List<Ingredient> IngredientAuto(String ingredient);
 	
@@ -28,7 +31,4 @@ public interface FoodMapper{
 	
 	public List<Food> FoodList(ArrayList<Integer> intList);
 
-	// food_name autocomplete
-	public List<Food> FoodAuto(String food);
-	
 }

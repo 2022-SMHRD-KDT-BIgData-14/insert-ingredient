@@ -89,6 +89,16 @@ public class FoodController {
 		@Autowired
 		private FoodMapper mapper;
 
+		// mainpage food autocomplete
+		@RequestMapping("/foodAuto.do")
+		public List<Food> FoodAuto(String food) {
+			System.out.println("controller 전달 food" + food);
+			
+			List<Food> food_name = mapper.FoodAuto(food);
+			
+			return food_name;
+		}
+		
 		@RequestMapping("/ingredientAuto.do")
 		public List<Ingredient> IngredientAuto(String ingredient) {
 			System.out.println("ingredient출력" + ingredient);

@@ -6,7 +6,6 @@ var ingredient_seq;
 $(function() {
 	$('#name').autocomplete({
 		source: function(request, response) {
-			console.log(request.term)
 			$.ajax({
 				url: 'ingredientAuto.do',
 				type: 'get',
@@ -16,7 +15,6 @@ $(function() {
 				},
 				success: function(ingredient_name) {
 
-					console.log(ingredient_name)
 
 					response($.map(ingredient_name, function(item) {
 						return {
@@ -36,12 +34,12 @@ $(function() {
 		minLength: 2,
 		delay: 100,
 		select: function(event, ui) {
-			console.log("selected : " + $(this).val());
-			console.log("ingredient_seq출력" + ui.item.ingredient_seq)
 			ingredient_seq = ui.item.ingredient_seq
 		}
 	});
 });
+
+
 
 
 var list = [];
@@ -167,11 +165,8 @@ $(document).ready(
 
 		// 삭제 버튼은 비동기적 생성이므로 document 최초 생성시가 아닌 검색을 통해 이벤트를 구현시킨다.
 		$(document).on("click", ".del-btn", function(e) {
-			console.log("삭제 후 list확인" + list)
-			console.log("list확인" + typeof list)
 			var index = $(this).attr("idx");
 			var name = $(this).attr("name");
-			console.log("name확인"+name)
 			
 				
 			if(list.length==1){
@@ -201,7 +196,6 @@ $(document).ready(
 				tag[index] = "";
 				$(this).parent().remove();
 			}
-			console.log("삭제 후 list확인" + list)
 		});
 
 
@@ -213,63 +207,14 @@ $(document).ready(
 
 
 
-// 음식 검색
-$(function() {
-	$('#foodAuto').autocomplete({
-		source: function(request, response) {
-			console.log(request.term)
-			$.ajax({
-				url: 'foodAuto.do',
-				type: 'get',
-				datatype: "json",
-				data: {
-					food: request.term
-				},
-				success: function(food_name) {
-
-					console.log(food_name)
-
-					response($.map(food_name, function(item) {
-						return {
-							label: item.food_name,
-							value: item.food_name,
-						}
-					}))
-				},
-				error: function(e) {
-					alert("error");
-				}
-			});
-
-		},
-		autoFocus: true,
-		minLength: 2,
-		delay: 100,
-		select: function(event, ui) {
-			console.log("selected : " + $(this).val());
-			console.log("food_seq출력" + ui.item.food_name)
-		}
-	});
-});
-
-
-
-
-
 
 function tagList(list) {
-	console.log("TagList : " + list)
-	console.log(typeof list)
 	$.ajax({
 		url: 'realtionList.do',
 		type: 'get',
 		datatype: "json",
 		data: {"list":list},
 		success: function(e) {
-			console.log("ajax : " + e)
-			console.log("foodlist 전달 성공")
-			console.log("taglist타입확인"+typeof e)
-//			Foodlist(JSON.stringify(e))
 			Foodlist(e)
 		},
 		error: function() {
@@ -282,12 +227,8 @@ function tagList(list) {
 
 
 function Foodlist(foodlist) {
-	console.log("foodlist함수 확인")
-//	console.log("relationlist출력 확인" + JSON.stringify(relationlist))
-//	console.log("relationlist타입 확인" + typeof relationlist)
 	$('.upload-result').html('')
 	for (var i = 0; i < foodlist.length; i++) {
-	console.log("foodlist함수 for문 확인")
 		$('.upload-result').append(
 		`
         <div style="cursor:pinter;" class="col-xs-12 col-md-4 section-container-spacer upload-section-line">
@@ -310,9 +251,7 @@ function Foodlist(foodlist) {
 		`
 		)
 		if(i === 8){
-			console.log("if문 확인")
 			return false;
 		}
 	};
-	console.log("foodlist함수 확인2")
 }
