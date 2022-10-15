@@ -2,135 +2,157 @@
 <!-- 타임리프 스키마 삽입 : 태그, 속성들 사용 -->
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <meta content="IE=edge" http-equiv="X-UA-Compatible">
-  <meta content="width=device-width,initial-scale=1" name="viewport">
-  <meta content="description" name="description">
-  <meta name="google" content="notranslate" />
-  <meta content="Mashup templates have been developped by Orson.io team" name="author">
+<meta charset="UTF-8">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="width=device-width,initial-scale=1" name="viewport">
+<meta content="description" name="description">
+<meta name="google" content="notranslate" />
+<meta content="Mashup templates have been developped by Orson.io team"
+	name="author">
 
-  <!-- Disable tap highlight on IE -->
-  <meta name="msapplication-tap-highlight" content="no">
-  <link rel="stylesheet" type="text/css" href="css/tag.css">
-  <link href="./images/apple-icon-180x180.png" rel="apple-touch-icon">
-  <link href="./images/favicon.ico" rel="icon">
+<!-- Disable tap highlight on IE -->
+<meta name="msapplication-tap-highlight" content="no">
+<link rel="stylesheet" type="text/css" href="css/tag.css">
+<link href="./images/apple-icon-180x180.png" rel="apple-touch-icon">
+<link href="./images/favicon.ico" rel="icon">
 
 
 
-  <title>Title page</title>
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-  <link rel="stylesheet"
+<title>Title page</title>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script type="text/javascript" src="js/search.js"></script>
-  <link href="../css/main.82cfd66e.css" rel="stylesheet">
-  <link href="../css/main.css" rel="stylesheet">
-  <link href="../js/main.js" rel="stylesheet">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" src="js/search.js"></script>
+<link href="../css/main.82cfd66e.css" rel="stylesheet">
+<link href="../css/main.css" rel="stylesheet">
+<link href="../js/main.js" rel="stylesheet">
 </head>
 
 <body>
 
-  <!-- Add your content of header -->
-  <header class="">
-    <div class="navbar navbar-default visible-xs">
-      <button type="button" class="navbar-toggle collapsed">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a th:href="goMain.do" class="navbar-brand">Insert Ingredient</a>
-    </div>
+	<!-- Add your content of header -->
+	<header class="">
+		<div class="navbar navbar-default visible-xs">
+			<button type="button" class="navbar-toggle collapsed">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a th:href="goMain.do" class="navbar-brand">Insert Ingredient</a>
+		</div>
 
-    <nav class="sidebar">
-      <div class="navbar-collapse" id="navbar-collapse">
-        <div class="site-header hidden-xs">
-          <a class="site-brand site-brand-size" th:href="goMain.do" title="">
-            <img class="img-responsive site-logo" alt="" src="../images/logo.png">
-            <span>Insert Ingredient</span>
-          </a>
-        </div>
-        <ul class="nav">
-			<li><a th:href="goMain.do" title="">Home</a></li>
-			<li><a th:href="goUpload.do" title="">Upload</a></li>
-			<li><a th:href="goMypage.do" title="">MyPage</a></li>
-        </ul>
+		<nav class="sidebar">
+			<div class="navbar-collapse" id="navbar-collapse">
+				<div class="site-header hidden-xs">
+					<a class="site-brand site-brand-size" th:href="goMain.do" title="">
+						<img class="img-responsive site-logo" alt=""
+						src="../images/logo.png"> <span>Insert Ingredient</span>
+					</a>
+				</div>
+				<ul class="nav">
+					<li><a th:href="goMain.do" title="">Home</a></li>
+					<li><a th:href="goUpload.do" title="">Upload</a></li>
+					<li><a th:href="goMypage.do" title="">MyPage</a></li>
+				</ul>
 
-        <nav class="nav-footer">
-          <h5><a th:href="goLogout.do" title="">Logout</a></h5>
-          <p>© Untitled | Website created with <a href="https://shrcampus.com/"
-              title="Beautiful Free Images">shrcampus</a></p>
-        </nav>
-      </div>
-    </nav>
-  </header>
-  <main class="" id="main-collapse">
-<div class="list">
+				<nav class="nav-footer">
+					<h5>
+						<a th:href="goLogout.do" title="">Logout</a>
+					</h5>
+					<p>
+						© Untitled | Website created with <a href="https://shrcampus.com/"
+							title="Beautiful Free Images">shrcampus</a>
+					</p>
+				</nav>
+			</div>
+		</nav>
+	</header>
+	<main class="" id="main-collapse">
+		<div class="list">
 
-    <div class="row">
-      <div class="col-xs-12 section-container-spacer">
-        
-        <h1><span class="main-title">U</span><!-- 
-          --><span class="main-title">p</span><!-- 
-          --><span class="main-title">l</span><!-- 
-          --><span class="main-title">o</span><!-- 
-          --><span class="main-title">a</span><!-- 
-          --><span class="main-title">d</span></h1>
-          
-          <!-- 배경이미지 -->
-          <div class=" upload-Banner-bg a-Opacity is-Opacity">
-            <span class="upload-Banner-bg-img" style="background-image: url(../images/음식13.jpg);">
-            </span>
-          </div>
-          
-        <!-- 식재료 업로드창 -->
-        <div class="col-xs-12 form-group-load-01">
-          <div class="search-center">
-	        <input type="text" id="name" autofocus placeholder="insert ingredient">
-          	<!-- <form class="upload-form-images" action = "http://127.0.0.1:5000/fileUpload" method = "POST"
+			<div class="row">
+				<div class="col-xs-12 section-container-spacer">
+
+					<h1>
+						<span class="main-title">U</span>
+						<!-- 
+          -->
+						<span class="main-title">p</span>
+						<!-- 
+          -->
+						<span class="main-title">l</span>
+						<!-- 
+          -->
+						<span class="main-title">o</span>
+						<!-- 
+          -->
+						<span class="main-title">a</span>
+						<!-- 
+          -->
+						<span class="main-title">d</span>
+					</h1>
+
+					<!-- 배경이미지 -->
+					<div class=" upload-Banner-bg a-Opacity is-Opacity">
+						<span class="upload-Banner-bg-img"
+							style="background-image: url(../images/음식13.jpg);"> </span>
+					</div>
+
+					<!-- 식재료 업로드창 -->
+					<div class="col-xs-12 form-group-load-01">
+						<div class="search-center">
+							<input type="text" id="name" autofocus
+								placeholder="insert ingredient">
+							<!-- <form class="upload-form-images" action = "http://127.0.0.1:5000/fileUpload" method = "POST"
               enctype = "multipart/form-data"> -->
-                <form class="upload-form-images">
-	            <input style="display: none;" name="ingredient_img" type="file" class="btn btn-primary btn-lg search-center-01" id="chooseFile02" accept="image/*" onchange="loadFile(this)">
-	            <input style="display: none;" type="file" class="btn btn-primary btn-lg search-center-01" id="chooseFile02">
-	            <label class="btn btn-primary btn-lg upload-label-pd" for="chooseFile02">Ingredient IMG</label>
-	            <label class="btn btn-primary btn-lg upload-label-pd" for="chooseFile02">Receipt IMG</label> 
-				<button onclick="uploadImages()" type="submit">Save</button>
-            	</form>
-            <!-- </form> -->
-          </div>
-        </div>
+							<form class="upload-form-images">
+								<input style="display: none;" name="ingredient_img" type="file"
+									class="btn btn-primary btn-lg search-center-01"
+									id="chooseFile02" accept="image/*" onchange="loadFile(this)">
+								<input style="display: none;" type="file"
+									class="btn btn-primary btn-lg search-center-01"
+									id="chooseFile02"> <label
+									class="btn btn-primary btn-lg upload-label-pd"
+									for="chooseFile02">Ingredient IMG</label> <label
+									class="btn btn-primary btn-lg upload-label-pd"
+									for="chooseFile02">Receipt IMG</label>
 
-        <!-- 비동기 엔터치면 키워드 나오는 -->
-        <div class="upload-keyword" >
-          <h4>ingredient</h4>
-			<ul id="tag-list">
-		  	</ul>
-        </div>
-    
+							</form>
+							<button class="btn btn-primary btn-lg upload-label-pd" onclick="uploadImages()">Save</button>
+							<!-- </form> -->
+						</div>
+					</div>
 
-      </div>
-      
-      <!-- 검색 결과 foodlist 출력 공간 -->
-      <div class="upload-result">
+					<!-- 비동기 엔터치면 키워드 나오는 -->
+					<div class="upload-keyword">
+						<h4>ingredient</h4>
+						<ul id="tag-list">
+						</ul>
+					</div>
 
-      </div>
-    </div>
-    </div>
-  <div class="list">
 
-      <div class="moveTopBtn">Top</div>
+				</div>
 
-    </div>
-  </main>
+				<!-- 검색 결과 foodlist 출력 공간 -->
+				<div class="upload-result"></div>
+			</div>
+		</div>
+		<div class="list">
 
-  <script>
+			<div class="moveTopBtn">Top</div>
+
+		</div>
+	</main>
+
+	<script>
     document.addEventListener("DOMContentLoaded", function (event) {
       navbarToggleSidebar();
       navActivePage();
     });
   </script>
 
-<!--   <script>
+	<!--   <script>
     const fileInput = document.getElementById("inputImage");
 
     fileInput.onchange = () => {
@@ -138,7 +160,7 @@
       console.log(selectedFile);
     }; 
   </script> -->
-  <script>
+	<script>
     (function (i, s, o, g, r, a, m) {
       i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
         (i[r].q = i[r].q || []).push(arguments)
@@ -149,8 +171,8 @@
     ga('send', 'pageview');
   </script>
 
-  <!-- 업로드 -->
-  <script>
+	<!-- 업로드 -->
+	<script>
     function loadFile(input) {
       var file = input.files[0];
 
@@ -163,9 +185,9 @@
       newImage.src = URL.createObjectURL(file);
     };
   </script>
-  
-   <!-- 글씨부드럽게나타남 -->
-  <script>
+
+	<!-- 글씨부드럽게나타남 -->
+	<script>
     const introText = document.querySelectorAll('.main-title')
 
     window.onload = () => {
@@ -175,10 +197,10 @@
       });
     };
   </script>
-  
-  <!-- 비동기 검색 -->
-  <!-- 방식01 엔터치면 나오기-->
-<!--   <script>
+
+	<!-- 비동기 검색 -->
+	<!-- 방식01 엔터치면 나오기-->
+	<!--   <script>
     function printName() {
       const name = document.getElementById('name').value;
       document.getElementById("result").innerText = name;
@@ -189,7 +211,7 @@
 
   </script> -->
 
-<script>
+	<script>
 $(document).ready(function(){
 
   var name = $("#name")
@@ -226,10 +248,11 @@ $(document).ready(function(){
   
 })
 </script>
+var list = [];
+	
 
-
-  <!-- 닫기버튼 -->
-<!-- <script>
+	<!-- 닫기버튼 -->
+	<!-- <script>
 
   function closeA() {
     const div = document.getElementById('result');
@@ -240,7 +263,7 @@ $(document).ready(function(){
   } 
   </script> -->
 
-<script>
+	<script>
   const $topBtn = document.querySelector(".moveTopBtn");
 
   // 버튼 클릭 시 맨 위로 이동
@@ -254,37 +277,186 @@ $(document).ready(function(){
   } */
 </script>
 
-  <script type="text/javascript" src="../js/main.85741bff.js"></script>
+	<script type="text/javascript" src="../js/main.85741bff.js"></script>
 
-<!-- 플라스크 -->
+<!-- 플라스크_식재료 이미지 업로드!! & 음식 목록 -->
 <script type="text/javascript">
 
-function uploadImages(ingredient_img){
+// 업로드 이미지 띄우기 플라스크 연동
+function uploadImages(){
 	
-	var formData = new FormData();
-	formData.append("img", ingredient_img)
+	console.log('업로드!!')
+	
+	var form = $('.upload-form-images')[0];
+    var formData = new FormData(form);
+	
+	console.log(form)
 	
 	$.ajax({
 		type:'post',
 		url:'http://127.0.0.1:5000/fileUpload',
 		data:formData,
-		/* dataType:'json', */
+		dataType:'json',
 		contentType : false,
         processData : false,
-		/* success:Foodlist(), */
-		success:function(){alert('성공되라고')},
-		/* function success(data){
-			
-			console.log(data)
-			alert(data)
-			// 성공은 잘 됨 -> 성공했을 때 실행할 함수 적기
-			
-		}, */
-		
+		success:successUpload,
 		error:function(){alert('플라스크 요청 실패임')}
 	})
 }
 
+// 플라스크 성공했을 때, 실행할 함수
+function successUpload(e){
+	alert("업로드 추출 성공함")
+	console.log("식재료 확인" + e.data)
+	
+	// 소문자 변환 후 poteto 변경 
+	ingredient_data = e.data.toLowerCase()
+	ingredient_data = ingredient_data.replace('poteto', 'potato');
+		
+	
+	// ingredient_data에 콤마(,) 포함이면~ (식재료 여러개 인식)
+	if(ingredient_data.includes(',')){
+		// ,를 기준으로 자르기
+		const ingredient_arr = ingredient_data.split(",")
+		console.log("0번째 재료" + ingredient_arr[0])
+		console.log("1번째 재료" + ingredient_arr[1])
+		
+		for(let i = 0; i<ingredient_arr.length; i++){
+			// 태그 삽입
+			var tag = {};
+			var counter = 0;
+
+			// 태그를 추가한다.
+			function addTag(value) {
+				tag[counter] = value; // 태그를 Object 안에 추가
+				counter++; // counter 증가 삭제를 위한 del-btn의 고유 id 가 된다.
+			}
+			// 최종적으로 서버에 넘길때 tag 안에 있는 값을 array type 으로 만들어서 넘긴다.
+			function marginTag() {
+
+				return Object.values(tag).filter(
+					function(word) {
+						return word !== "";
+					});
+			}
+			
+			$("#tag-list").append(
+				"<li class='tag-item'>"
+				+ ingredient_arr[i]
+				+ "<span class='del-btn' idx='" + counter + "' name='"+ ingredient_seq +"'>x</span></li>");
+			
+			addTag(ingredient_arr[i]);
+			
+			//list.push(ingredient_seq)
+			var taglist = {
+				"taglist" : list
+			}
+			//tagList(JSON.stringify(taglist))
+			
+			ingredient_arr
+			
+			//1854 carrot
+			//1880 potato
+			list.push('1854')
+			list.push('1880')
+			
+			
+			result = "{\"taglist\": ["+ list +"] }"
+			console.log(ingredient_arr)
+			console.log(result)
+			tagList(result)
+		} //for문 끝
+	}
+			
+	// ingredient_data에 ,포함 아니면~ (식재료 한개 인식)
+	else{
+		// 태그 삽입
+		var tag = {};
+		var counter = 0;
+
+		// 태그를 추가한다.
+		function addTag(value) {
+			tag[counter] = value; // 태그를 Object 안에 추가
+			counter++; // counter 증가 삭제를 위한 del-btn의 고유 id 가 된다.
+		}
+		// 최종적으로 서버에 넘길때 tag 안에 있는 값을 array type 으로 만들어서 넘긴다.
+		function marginTag() {
+
+			return Object.values(tag).filter(
+				function(word) {
+					return word !== "";
+				});
+		}
+		var result = Object
+		.values(tag)
+		.filter(
+			function(
+				word) {
+				return word === tagValue;
+			})
+		
+		$("#tag-list").append(
+			"<li class='tag-item'>"
+			+ e.data
+			+ "<span class='del-btn' idx='" + counter + "' name='"+ ingredient_seq +"'>x</span></li>");
+		addTag(ingredient_arr[i]);
+		
+		list.push(ingredient_seq)
+		
+		var taglist = {
+			"taglist" : list
+		}
+		console.log(taglist)
+		tagList(JSON.stringify(taglist))	
+	}
+}
+
+// 태그 리스트 함수
+function tagList(list) {
+	$.ajax({
+		url: 'realtionList.do',
+		type: 'get',
+		datatype: "json",
+		data: {"list":list},
+		success: function(e) {
+			Foodlist(e)
+		},
+		error: function() {
+			console.log("foodlist 전달 실패")
+		}
+	})
+}
+
+// 푸드 리스트 함수
+function Foodlist(foodlist) {
+	$('.upload-result').html('')
+	for (var i = 0; i < foodlist.length; i++) {
+		$('.upload-result').append(
+		`
+        <div style="cursor:pinter;" class="col-xs-12 col-md-4 section-container-spacer upload-section-line">
+         
+          <!-- 검색결과 호버01-1 -->
+          <div class="grid-item-01">
+            <div class="gutter-sizer"></div>
+            <div class="grid-sizer-01"></div>
+            <img class="img-responsive upload-print-img" src="${foodlist[i].food_img}">
+            <a href="detail.do?food_seq=${foodlist[i].food_seq}" class="project-description">
+              <!-- 여기에 찜 넣기 -->
+              <div class="project-text-holder-01">
+                <div class="project-text-inner-01">
+                  <h1>${foodlist[i].food_name}</h1>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+		`
+		)
+		if(i === 8){
+			return false;
+		}
+	};
+}
 
 </script>
 

@@ -139,3 +139,8 @@ show columns from relationship
 
 -- 메롱~
 select * from food
+
+select * from ingredient where ingredient_name = 'carrot'
+
+select * from ingredient where ingredient_name = 'potato'
+

@@ -42,7 +42,7 @@ public class MoveController {
 			return "view/myPage"; 
 		}
 		else {
-			return "view/detail";
+			return "view/login";
 		}
 		
 		//if(member.getUser_id() != null) {
