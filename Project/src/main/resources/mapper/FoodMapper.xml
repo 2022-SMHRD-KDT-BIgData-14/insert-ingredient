@@ -42,9 +42,11 @@
 		</foreach>
 	</select>
 
-	
-	
-	
+	<!-- 식재료 이름에 맞는 식재료 번호 가져오기 -->
+	<select id="ingreSeq" parameterType="String" resultType="Integer">
+		select ingredient_seq from ingredient where ingredient_name = #{ingredient_name} 
+
+	</select>
 	
 	
 </mapper>
