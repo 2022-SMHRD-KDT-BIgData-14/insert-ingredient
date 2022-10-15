@@ -56,18 +56,9 @@
 
 				<nav class="nav-footer">
 					<!-- 로그아웃 -->
-					<h5>
+					<h4>
 						<a th:href="goLogout.do" title="">Logout</a>
-					</h5>
-					<p class="nav-footer-social-buttons">
-						<a class="fa-icon" href="https://www.instagram.com/" title="">
-							<i class="fa fa-instagram"></i>
-						</a> <a class="fa-icon" href="https://dribbble.com/" title=""> <i
-							class="fa fa-dribbble"></i>
-						</a> <a class="fa-icon" href="https://twitter.com/" title=""> <i
-							class="fa fa-twitter"></i>
-						</a>
-					</p>
+					</h4>
 					<p>
 						© Untitled | Website created with <a href="https://shrcampus.com/"
 							title="Beautiful Free Images">shrcampus</a>
@@ -82,7 +73,7 @@
 		<div class="list">
 			<h1>Detail</h1>
 			<div class="row">
-				<div class="col-xs-12 col-md-6 datail-upmargin">
+				<div class="col-xs-12 col-md-6 detail-upmargin">
 					<!-- 메인 음식 사진 -->
 					<img class="img-responsive upload-print-img" alt=""
 						th:src="${session.Food.food_img}">
@@ -160,9 +151,9 @@
 	    }
 	
 	    // 처음에 페이지 하단으로 스크롤 위치 지정
-	    window.onload = () => {
+	/*     window.onload = () => {
 	      window.scrollTo({ top: document.body.scrollHeight });
-	    }
+	    } */
     </script>
     
     <!-- 페이지 로드될 때, 요리 과정 split해서 띄우기 -->
@@ -210,8 +201,8 @@
 	    			<div style="display:flex">
 	    			<img style="width:400px" id="orderIMG" src="${img_arr[i]}" alt="과정 이미지 자리임">
 	    			<div style="margin:3% 0 0 3%">
-	    			<h2>` + (i+1) + `</h2>
-	    			<p>` + article_arr[i] + `</p>
+	    			<h1>` + (i+1) + `</h1>
+	    			<p class="detail-flow-ment">` + article_arr[i] + `</p>
 	    			</div>
 	    			</div>
 	    			</li>`
