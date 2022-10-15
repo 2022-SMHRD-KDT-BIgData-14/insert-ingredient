@@ -4969,6 +4969,12 @@ main {
   padding-bottom: 30px; }
 
 /* 공통 로긴정렬 */
+.nav-footer h4{
+	text-align: center;
+	margin-left: -30px;
+	font-weight: normal;
+}
+
 nav.nav-footer a:hover{
   color: #ff6360;
 }
