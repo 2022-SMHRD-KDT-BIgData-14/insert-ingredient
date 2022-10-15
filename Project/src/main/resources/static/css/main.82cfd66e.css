@@ -4180,15 +4180,27 @@ color: red;}
 }
 
 /* 상세페이지 css_10.12(아영) */
-.detail-img-size {
+/* .detail-img-size {
+  width: 100%;
+    position: absolute;
+    vertical-align: middle;
+    height: auto;
+    left: -100%;
+    right: -100%;
+    top: -100%;
+    bottom: -100%;
+    margin: auto;
+    min-height: 100%;
+    min-width: 100%;
+} */
+
+.detail-upmargin{
+  margin-top: 3%;
   width: 800px;
   height: 500px;
+	overflow: hidden;
 }
-
-.datail-upmargin{
-  margin-top: 3%;
-}
-.datail-upmargin h1{
+.detail-upmargin h1{
   margin-left: 2%;
 }
 
@@ -4664,10 +4676,11 @@ li{
   position: absolute;
   left: 0;
   top: 0;
-  width: 2000px; /* 슬라이드할 사진과 마진 총 넓이 */
+  width: 500px; /* 슬라이드할 사진과 마진 총 넓이 */
   transition: left 0.5s ease-out; 
   /*ease-out: 처음에는 느렸다가 점점 빨라짐*/
   /* margin-bottom: 10%; */
+  margin-top: 10%;
 }
 
 /* 첫 번째 슬라이드 가운데에 정렬하기위해
@@ -4736,12 +4749,11 @@ li{
   hidden으로 숨겨줘야됨*/
 }
 
-
 .slides2{
   position: absolute;
   left: 0;
   top: 0;
-  width: 2000px; /* 슬라이드할 사진과 마진 총 넓이 */
+  width: 500px; /* 슬라이드할 사진과 마진 총 넓이 */
   transition: left 0.5s ease-out; 
   /*ease-out: 처음에는 느렸다가 점점 빨라짐*/
 }
@@ -4842,19 +4854,41 @@ li{
 
 .my-slide-00{
   cursor: pointer;
+  border-radius: 50px;
+  width: 100%;
+   	position: absolute; 
+	vertical-align: middle;
+	height: auto;
+    left: -100%;
+    right: -100%;
+    top: -100%;
+    bottom: -100%;
+    margin: auto;
+    min-height: 100%;
+    min-width: 100%;
 }
 
-/* .my-slide-big01{
-  width: 33%;
-  display: none;
-  visibility: hidden;
-} */
+ .my-slide-big01{
+  width: 700px;
+  height: 700px;
+  overflow: hidden;
+} 
 
 .click-img{
-	width: 500px;
+	width: 100%;
+	position: absolute;
+	vertical-align: middle;
 	height: auto;
-	
+    left: -100%;
+    right: -100%;
+    top: -100%;
+    bottom: -100%;
+    margin: auto;
+    min-height: 100%;
+    min-width: 100%;
+    border-radius: 50px;
 }
+
 
 /* 여기까지 */
 
