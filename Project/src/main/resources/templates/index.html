@@ -64,7 +64,7 @@
 
         <nav class="nav-footer">
           <!-- <a class="nav-footer-lj" href="./join-a.html" title="">Login / Join</a> -->
-          <h5><a th:href="goLogin.do" title="">Login</a> / <a th:href="goJoin.do" title="">Join</a></h5>
+          <h4><a th:href="goLogin.do" title="">Login</a> / <a th:href="goJoin.do" title="">Join</a></h4>
           <p>© Untitled | Website created with <a href="https://shrcampus.com/"
               title="Beautiful Free Images">shrcampus</a></p>
         </nav>
@@ -81,7 +81,7 @@
      <span class="main-title" >What </span><!-- 
           --><span class="main-title">should </span><!--
           --><span class="main-title">I </span><!-- 
-              --><span class="main-title">eat</span><!--
+              --><span class="main-title">eat</span>
               <!-- span class="main-title">해</span  -->
               <!-- span class="main-title">조</span> --> 
             
@@ -188,7 +188,7 @@
     const slideMarginm = 80; //슬라이드간의 margin 값
 
     //전체 슬라이드 컨테이너 넓이 설정
-    slidesm.style.width =  (slideWidthm* + slideMarginm) * slideCountm + 'px';
+    slidesm.style.width =  (slideWidthm + slideMarginm) * slideCountm + 'px';
     
     function moveSlidem(num) {
       slidesm.style.left = -num * 1050 + 'px';
