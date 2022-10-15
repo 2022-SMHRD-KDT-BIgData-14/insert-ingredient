@@ -4261,32 +4261,61 @@ color: red;}
 }
 
 /* 메인 */
-@media screen and (max-width: 400px) and (min-width:1px) {
+
+@media (max-width: 440px) and (min-width:1px) {
   .new-10 {
     max-width: 100%;
     padding: 0 6.25vw;
+    font-size: large;
   }
   .main-name-size{
    width: auto;
+   font-size: 50%;
   }
 }
+
+@media (max-width: 1920px) and (min-width:450px){
+	
 
 .main-name-size{
   font-size: 800%;
   font-weight: bold;
   color: #000;
 }
+}
 .main-name-size span{
   margin-top: -1%;
 }
   
-  @media screen and (max-width: 500px) and (min-width:1px){
-    .new-11{
-      /* font-size: 2vw; */
-      padding: 2%;
-    }
+  @media (max-width: 440px) and (min-width:1px) {
+  .main-name-size{
+  	margin: 0;
   }
   
+  .main-name-size span{
+    font-size: 700%;
+    display: revert;
+    line-height: 1em;
+    font-weight: bold;
+    padding-inline: 1%;
+  }
+  
+  .new-11{
+  	padding-block: 10%;
+  }
+  
+  .new-11 p{
+    font-size: 68%;
+    margin-top: -2%;
+  }
+  
+  .form-group-start {
+    text-align: center;
+    padding-block: 185px;
+    display: block;
+}
+  
+}
   .new-11{
     line-height: 1.2;
     margin-top: -2%;
@@ -4441,7 +4470,7 @@ label.upload-label01:hover {
   /* margin-bottom: 10%; */
 }
 
-@media (max-width:1920px){
+@media (max-width:1920px) and (min-width:440px){
   .main-slide-size{
     width: 50%;
     /* height: 20%; */
@@ -4472,6 +4501,54 @@ label.upload-label01:hover {
 
 }
 
+@media (max-width:440px) and (min-width:1px){
+  .main-slide-size{
+    width: 20%;
+    /* margin-left: -30px; */
+    /* height: 20%; */
+  }
+  #slideShowm{
+    width: 103%;
+    height: 230px;
+    position: relative;
+    overflow: hidden;
+    margin: 10px -30px 10px 0px;
+    /* height: 233px; */
+  }
+  .slide-text-line{
+    /* width: 100%; */
+    /* font-size: 50px; */
+    display: inline-block;
+    margin-left: 14px;
+    vertical-align: top;
+    color: #000;
+    margin-top: 20px;
+  }
+  .slide-text-line>span+span{
+    width: 69%;
+    font-size: 17px;
+    display: block;
+  }
+  .slide-text-line>span{
+    /* width: 100%; */
+    font-size: 25px;
+    /* display: block; */
+  }
+  .slidesm li{
+    width: 31.5%;
+  }
+  .slidesm {
+    width: 0;
+  }
+
+  .slidesm li:not(:last-child){
+    float: left;
+    margin-left: -1.5%;
+  }
+
+}
+
+ 
 
 /* 첫 번째 슬라이드 가운데에 정렬하기위해
 첫번째 슬라이드만 margin-left조정 */
