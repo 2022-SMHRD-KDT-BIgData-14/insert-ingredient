@@ -4063,6 +4063,7 @@ height: 329px;
 overflow:hidden;
 vertical-align: middle;
 padding: 0;
+margin-top: 12%;
  }
 .grid-item .project-description {
   opacity: 0;
@@ -4140,7 +4141,15 @@ color: red;}
 	position: absolute;
 	vertical-align: middle;
 	height: auto;
+    left: -100%;
+    right: -100%;
+    top: -100%;
+    bottom: -100%;
+    margin: auto;
+    min-height: 100%;
+    min-width: 100%;
 }
+
 
 
 /* 여기까지 */
