@@ -73,8 +73,11 @@
           <h2>찜한목록</h2>
           <div id="slideShow1">
             <!-- 찜한 음식 목록 리스트로 가져오기 -->
-            <ul class="slides1" th:each="list:${list}">
-              <li><img class="my-slide-00" th:src="${list.food_img}" alt="음식 사진 자리임"></li>
+            <ul class="slides1">
+              <li th:each="list:${list}">
+              	<!-- img 반복 -->
+              	<img class="my-slide-00" th:src="${list.food_img}" alt="음식 사진 자리임">
+              </li>
               <!-- <li><img id="wishIMG" alt="food_img자리임" th:src="${list.food_img}"></li> -->
               <!-- <li><img style="width: 300px;" src="../images/like01.jpg" alt=""></li>
               <li><img style="width: 300px;" src="../images/img-010.jpg" alt=""></li>
