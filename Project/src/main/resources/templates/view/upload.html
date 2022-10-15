@@ -104,8 +104,7 @@
 						<div class="search-center">
 							<input type="text" id="name" autofocus
 								placeholder="insert ingredient">
-							<!-- <form class="upload-form-images" action = "http://127.0.0.1:5000/fileUpload" method = "POST"
-              enctype = "multipart/form-data"> -->
+							<!-- 이미지 업로드 폼 시작 -->
 							<form class="upload-form-images">
 								<input style="display: none;" name="ingredient_img" type="file"
 									class="btn btn-primary btn-lg search-center-01"
@@ -117,7 +116,6 @@
 									for="chooseFile02">Ingredient IMG</label> <label
 									class="btn btn-primary btn-lg upload-label-pd"
 									for="chooseFile02">Receipt IMG</label>
-
 							</form>
 							<button class="btn btn-primary btn-lg upload-label-pd" onclick="uploadImages()">Save</button>
 							<!-- </form> -->
@@ -309,17 +307,35 @@ function successUpload(e){
 	alert("업로드 추출 성공함")
 	console.log("식재료 확인" + e.data)
 	
-	// 소문자 변환 후 poteto 변경 
+	// 소문자 변환 후 poteto 변경 / meat -> beef로 변경
 	ingredient_data = e.data.toLowerCase()
 	ingredient_data = ingredient_data.replace('poteto', 'potato');
-		
+	ingredient_data = ingredient_data.replace('meat', 'pork');
 	
+	
+	
+	
+	// 텍스트 태그로 삽입하는 과정
 	// ingredient_data에 콤마(,) 포함이면~ (식재료 여러개 인식)
 	if(ingredient_data.includes(',')){
 		// ,를 기준으로 자르기
-		const ingredient_arr = ingredient_data.split(",")
+		var ingredient_arr = ingredient_data.split(",")
 		console.log("0번째 재료" + ingredient_arr[0])
-		console.log("1번째 재료" + ingredient_arr[1])
+		
+		// ingredient_seq 담아오기(식재료 여러개)
+		/* var ingredient_seq2;
+		$.ajax({
+			url:"print_ingreSeq2.do",
+			type:"post",
+			async:false,
+			data:{"ingredient_arr" : ingredient_arr},
+			dataType:"json",
+			success:function(data){
+				ingredient_seq2 = data;
+			},
+			error:function(e){alert('seq error~!')}
+		})
+		console.log("컨트롤러seq2확인해보기:"+ingredient_seq2) */
 		
 		for(let i = 0; i<ingredient_arr.length; i++){
 			// 태그 삽입
@@ -333,11 +349,10 @@ function successUpload(e){
 			}
 			// 최종적으로 서버에 넘길때 tag 안에 있는 값을 array type 으로 만들어서 넘긴다.
 			function marginTag() {
-
 				return Object.values(tag).filter(
 					function(word) {
 						return word !== "";
-					});
+				});
 			}
 			
 			$("#tag-list").append(
@@ -346,6 +361,13 @@ function successUpload(e){
 				+ "<span class='del-btn' idx='" + counter + "' name='"+ ingredient_seq +"'>x</span></li>");
 			
 			addTag(ingredient_arr[i]);
+			console.log("반복문 속 재료" +ingredient_arr[i])
+			console.log("---------------------------------")
+			console.log("반복문 속 재료" +ingredient_arr)
+			
+		} //for문 끝
+		
+			console.log("반복문 밖 재료" +ingredient_arr[0])
 			
 			//list.push(ingredient_seq)
 			var taglist = {
@@ -354,22 +376,49 @@ function successUpload(e){
 			//tagList(JSON.stringify(taglist))
 			
 			ingredient_arr
+			console.log("식재료 여러개 확인 : " + ingredient_arr)
+			
+ 			if(ingredient_arr.includes('carrot')){
+				list.push('1854')
+			}else if(ingredient_arr.includes('potato')){
+				list.push('1880');
+			}else if(ingredient_arr.includes('onion')){
+				list.push('1853');
+			}else if(ingredient_arr.includes('pork')){
+				list.push('1957');
+			}else if(ingredient_arr.includes('green onion')){
+				list.push('1864');
+			}else if(ingredient_arr.includes('chicken')){
+				list.push('1884');
+			}
 			
 			//1854 carrot
 			//1880 potato
-			list.push('1854')
-			list.push('1880')
-			
+			//list.push('1854')
+			//list.push('1880')
 			
 			result = "{\"taglist\": ["+ list +"] }"
-			console.log(ingredient_arr)
 			console.log(result)
 			tagList(result)
-		} //for문 끝
-	}
+	} // if문 끝
 			
 	// ingredient_data에 ,포함 아니면~ (식재료 한개 인식)
 	else{
+		// ingredient_seq 담아오기(식재료 1개)
+		var ingredient_seq_test;
+		$.ajax({
+			url:"print_ingreSeq1.do",
+			type:"post",
+			async:false,
+			data:{"ingredient_data" : ingredient_data},
+			dataType:"json",
+			success:function(data){
+				ingredient_seq_test = data;
+			},
+			error:function(e){alert('seq error~!')}
+		})
+		console.log("컨트롤러seq확인해보기:"+ingredient_seq_test)
+		
 		// 태그 삽입
 		var tag = {};
 		var counter = 0;
@@ -387,28 +436,55 @@ function successUpload(e){
 					return word !== "";
 				});
 		}
-		var result = Object
-		.values(tag)
-		.filter(
-			function(
-				word) {
-				return word === tagValue;
+		
+		// 값이 없으면 동작 안합니다.
+		if (ingredient_data !== "") {
+
+			// 같은 태그가 있는지 검사한다. 있다면 해당값이 array 로 return 된다.
+			var result = Object.values(tag).filter(
+				function(word) {
+					return word === ingredient_data;
 			})
-		
-		$("#tag-list").append(
-			"<li class='tag-item'>"
-			+ e.data
-			+ "<span class='del-btn' idx='" + counter + "' name='"+ ingredient_seq +"'>x</span></li>");
-		addTag(ingredient_arr[i]);
-		
-		list.push(ingredient_seq)
-		
-		var taglist = {
-			"taglist" : list
+				
+			// 태그 중복 검사
+			if (result.length == 0) {
+				$("#tag-list").append(
+					"<li class='tag-item'>"
+					+ ingredient_data
+					+ "<span class='del-btn' idx='" + counter + "' name='"+ ingredient_seq_test +"'>x</span></li>");
+				console.log("태그ingredient_data : " + ingredient_data)
+				console.log("태그ingredient_seq : " + ingredient_seq_test)
+				
+				addTag(ingredient_data);
+
+				list.push(ingredient_seq_test)
+				
+				console.log("list.push:" + list.push(ingredient_seq_test))
+				
+				var taglist = {
+					"taglist" : list
+				}
+				
+				// list에 중복 값 제거하기
+				var uniqueList = list.filter(function(item, idx, self) {
+				    return self.indexOf(item) == idx;
+				})
+
+				console.log(uniqueList);
+				
+				console.log(list)
+				result = "{\"taglist\": ["+ uniqueList +"] }"
+				
+				ingredient_data
+				
+				console.log(result)
+				tagList(result)
+				
+			} else {
+				alert("Duplicate Ingredient");
+			}
 		}
-		console.log(taglist)
-		tagList(JSON.stringify(taglist))	
-	}
+	}// else문 끝
 }
 
 // 태그 리스트 함수

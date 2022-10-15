@@ -144,3 +144,7 @@ select * from ingredient where ingredient_name = 'carrot'
 
 select * from ingredient where ingredient_name = 'potato'
 
+select * from ingredient where ingredient_name = 'pork'
+
+select ingredient_seq from ingredient where ingredient_name = 'egg'
+

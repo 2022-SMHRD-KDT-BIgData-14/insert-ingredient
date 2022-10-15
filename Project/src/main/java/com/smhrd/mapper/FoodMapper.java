@@ -30,5 +30,8 @@ public interface FoodMapper{
 	public List<Relationship> RelationList(FoodVO foodVO);
 	
 	public List<Food> FoodList(ArrayList<Integer> intList);
-
+	
+	
+	// 식재료 이름에 맞는 식재료 번호 가져오기1
+	public Integer ingreSeq(String ingredient_name);
 }

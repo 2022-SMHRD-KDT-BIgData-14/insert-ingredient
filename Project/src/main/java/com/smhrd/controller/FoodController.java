@@ -3,6 +3,7 @@ package com.smhrd.controller;
 import java.security.Provider.Service;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -84,11 +86,6 @@ public class FoodController {
 	// Food food = (Food) session.getAttribute("Food");
 	// }
 	
-	// 이미지 업로드
-	// @PostMapping("http://127.0.0.1:5000/fileUpload")
-	
-	
-	// -------------------------------------------------------------------------
 	
 	// ajax 통신을 위한 restcontroller
 	@RestController
@@ -159,7 +156,7 @@ public class FoodController {
 		@RequestMapping("/imgrealtionList.do")
 		public List<Food> imgrealtionList(String list) {
 
-			System.out.println("realtionList.do 들어옴");
+			System.out.println("imgrealtionList.do 들어옴");
 			System.out.println("태그 list:" + list);
 			// Json 파싱
 			JsonParser parser = new JsonParser();
@@ -195,6 +192,23 @@ public class FoodController {
 
 			return foodlist;
 
+		}
+		
+		// 업로드했을 때 식재료 시퀀스 알아내기.. (식재료 1개)
+		// 식재료 이름을 통해 식재료 번호 가져오는 mapper 만들어보기
+		@RequestMapping("/print_ingreSeq1.do")
+		public Integer ingreSeq(@RequestBody String ingredient_data) {
+			System.out.println("data확인해보기"+ingredient_data);
+			
+			//ingredient_data=pork
+			//[ingredient_data, pork]
+			String[] data = ingredient_data.split("=");
+				
+			Integer seq = mapper.ingreSeq(data[1]);
+			
+			System.out.println("seq" + seq);
+			
+			return seq==null? 0 : seq;
 		}
 		
 
