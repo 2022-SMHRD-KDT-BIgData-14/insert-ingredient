@@ -4162,7 +4162,7 @@ color: red;}
   /* 상세 */
   /* 상세 아이콘 */
 
-  .btn-like {
+ .btn-like {
     background-color: transparent;
     border-style: none;
     color: transparent;
@@ -4173,11 +4173,18 @@ color: red;}
     margin-top: -5px;
     margin-left: 10px;
 }
-
-.btn-like.done {
-  text-shadow: 0 0 2px #ff0000, 0 0 0 rgb(255, 0, 0);
-    
+.btn-dislike {
+	background-color: transparent;
+    border-style: none;
+    color: transparent;
+    text-shadow: 0 0 2px #ff0000, 0 0 0 rgb(255, 0, 0);
+    font-size: -webkit-xxx-large;
+    float: left;
+    text-align: center;
+    margin-top: -5px;
+    margin-left: 10px;
 }
+
 
 /* 상세페이지 css_10.12(아영) */
  .detail-img-size {

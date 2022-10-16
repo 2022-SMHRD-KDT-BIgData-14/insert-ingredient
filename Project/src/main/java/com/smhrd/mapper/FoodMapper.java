@@ -1,6 +1,7 @@
 package com.smhrd.mapper;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -31,7 +32,9 @@ public interface FoodMapper{
 	
 	public List<Food> FoodList(ArrayList<Integer> intList);
 	
-	
 	// 식재료 이름에 맞는 식재료 번호 가져오기1
 	public Integer ingreSeq(String ingredient_name);
+	
+	// detailpage접근 시 찜 여부 확인
+	public Integer searchWish(HashMap<String, Object> map);
 }

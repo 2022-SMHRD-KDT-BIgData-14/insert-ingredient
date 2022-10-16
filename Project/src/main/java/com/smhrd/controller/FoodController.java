@@ -1,19 +1,13 @@
 package com.smhrd.controller;
 
-import java.security.Provider.Service;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.util.URLEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -48,6 +42,68 @@ public class FoodController {
 			if (resultF != null) {
 				session.setAttribute("Food", resultF);
 				System.out.println("food세션 보내기 성공");
+				
+				HashMap<String, Object> map = new HashMap<>();
+				map.put("resultF", resultF.getFood_seq());
+				map.put("resultM", resultM.getUser_id());
+				
+				System.out.println("hashmap출력확인" + map.values());
+				
+				Integer checkWish = (int)mapper.searchWish(map);
+				System.out.println("addWishresult확인" + checkWish);
+				if(checkWish == 1) {
+					// wishlist에 추가되어있을 경우
+					session.setAttribute("checkWish", 1);
+				}else {
+					// wishlist에 추가되어있지 않을 경우
+					session.setAttribute("checkWish", 0);
+				}
+				
+				return "view/detail";
+			} else {
+				System.out.println("food세션 보내기 실패");
+				return "redirect:/";
+			}
+		} else {
+			return "view/login";
+		}
+	}
+	
+	
+	@RequestMapping("/witsh_detail.do")
+	public String witsh_detail(HttpSession session) {
+		
+		System.out.println("witsh_detail");
+		Food resultF = (Food)session.getAttribute("Food");
+		
+		System.out.println("result : " + resultF);
+
+		// 회원 정보 세션 가져오기
+		Member resultM = (Member) session.getAttribute("member");
+
+		// 로그인 먼저 된 후, 푸드 세션 보내기
+		if (resultM != null) {
+			if (resultF != null) {
+				session.setAttribute("Food", resultF);
+				System.out.println("food세션 보내기 성공");
+				
+				
+				HashMap<String, Object> map = new HashMap<>();
+				map.put("resultF", resultF.getFood_seq());
+				map.put("resultM", resultM.getUser_id());
+				
+				System.out.println("hashmap출력확인" + map.values());
+				
+				Integer checkWish = (int)mapper.searchWish(map);
+				System.out.println("addWishresult확인" + checkWish);
+				if(checkWish == 1) {
+					// wishlist에 추가되어있을 경우
+					session.setAttribute("checkWish", 1);
+				}else {
+					// wishlist에 추가되어있지 않을 경우
+					session.setAttribute("checkWish", 0);
+				}
+				
 				return "view/detail";
 			} else {
 				System.out.println("food세션 보내기 실패");

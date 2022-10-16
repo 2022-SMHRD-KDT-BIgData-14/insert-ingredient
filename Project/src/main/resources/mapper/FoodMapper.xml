@@ -45,7 +45,11 @@
 	<!-- 식재료 이름에 맞는 식재료 번호 가져오기 -->
 	<select id="ingreSeq" parameterType="String" resultType="Integer">
 		select ingredient_seq from ingredient where ingredient_name = #{ingredient_name} 
-
+	</select>
+	
+		<!-- detail page 진입 시 사용자의 찜 여부 확인 후 아이콘 변경 -->
+	<select id="searchWish" parameterType="hashmap" resultType="java.lang.Integer">
+		select count(*) from wishlist where user_id=#{resultM} and food_seq=#{resultF}
 	</select>
 	
 	

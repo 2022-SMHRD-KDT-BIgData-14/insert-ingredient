@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.mapper.WishlistMapper">
-	<!-- 찜하기 -->
-	<insert id="savelist" parameterType="com.smhrd.domain.Wishlist" >
-		insert into wishlist (user_id, food_seq, wish_or_not)
-		select #{user_id}, #{food_seq}, 'YES'
-		from dual where not exists 
-		(select * from wishlist where wish_or_not='YES' and user_id=#{user_id} and food_seq=#{food_seq})
+
+	<!-- 찜 추가 -->
+	<insert id="addWish" parameterType="hashmap">
+		insert into wishlist values(#{resultM}, #{resultF}, 'YES')
 	</insert>
 	
-	<!-- 찜 취소 -->
-	<update id="noWish" parameterType="com.smhrd.domain.Wishlist">
-		update wishlist set wish_or_not = NULL where wish_or_not = 'YES' and user_id=#{user_id}
-	</update>
+	<!-- 찜 삭제 -->
+	<delete id="delWish" parameterType="hashmap">
+		delete from wishlist where user_id=#{resultM} and food_seq=#{resultF}
+	</delete>
 	
 	<!-- 찜 목록 확인 -->
 	<!-- <select id="showWishAjax" parameterType="com.smhrd.domain.Wishlist" resultType="com.smhrd.domain.Wishlist">

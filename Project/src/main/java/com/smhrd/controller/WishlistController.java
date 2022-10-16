@@ -1,5 +1,6 @@
 package com.smhrd.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -7,8 +8,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -22,60 +21,64 @@ public class WishlistController {
 	@Autowired
 	private WishlistMapper mapper;
 	
-	/*
-	 * @GetMapping("/saveWish.do") public String saveWish(Wishlist list) { int cnt =
-	 * mapper.saveWish(list);
-	 * 
-	 * if(cnt == 1) { // 찜하기 성공 return } }
-	 */
-	
-	// 찜하기
-	@RequestMapping("/saveWish.do")
-	public String savelist(HttpSession session) {
-		// 회원이라면, wishlist 테이블에 저장하고 마이페이지로 이동
-		
+	// wishlist 추가
+	@RequestMapping("/addWish.do")
+	public String addWish(HttpSession session) {
 		// 회원 정보 세션 가져오기
-		Member resultM = (Member) session.getAttribute("member"); //★
+		Member resultM = (Member) session.getAttribute("member");
+		System.out.println("member출력 확인" + resultM.getUser_id());
+		
 		// 음식 정보 세션 가져오기
-		Food resultF = (Food) session.getAttribute("Food"); //★
-		
-		System.out.println("---찜---");
-		System.out.println("resultM" + resultM);
-		System.out.println("resultF" + resultF);
+		Food resultF = (Food) session.getAttribute("Food");
+		System.out.println("food출력 확인" + resultF.getFood_seq());
 		
 		
-		// 회원일 때, 음식정보도 널이 아닐 때,
-		if(resultM != null && resultF != null) {
-			// 찜 성공 시, 마이페이지로 이동
-			System.out.println("음식, 회원 -> null이 아님");
-			int cnt = mapper.savelist(resultM.getUser_id(), resultF.getFood_seq());
-			
-			 if (cnt == 1) { 
-				 System.out.println("wishlist 담기 성공");
-				 session.setAttribute("Member", resultM); 
-				 session.setAttribute("Food", resultF); 
-				 return "view/detail";
-			 } 
-			 else {
-				 // 찜 취소 시, 페이지는 그대로, 버튼 변경
-				 System.out.println("찜 취소 됨!");
-				 
-				 int cntNo = mapper.noWish(resultM.getUser_id(), resultF.getFood_seq());
-				 if( cntNo == 1) {
-					 System.out.println("wishlist 삭제 성공"); 
-					 return "view/detail"; 
-					 
-				 }else {
-					 System.out.println("wishlist 삭제 실패"); 
-					 return "view/detail";
-				 }
-			 }
-		}	
-		// 비회원이라면, 로그인 페이지로 이동	
-		else {
-			System.out.println("비회원..");
-			return "view/login";
+		
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("resultF", resultF.getFood_seq());
+		map.put("resultM", resultM.getUser_id());
+		System.out.println("hashmap출력확인" + map.values());
+		
+		
+		int addWishresult = mapper.addWish(map);
+		System.out.println("addWishresult확인" + addWishresult);
+		
+		if(addWishresult == 1) {
+			session.setAttribute("addWishresult", 1);
+			System.out.println("wishlist 추가 성공");
+		}else {
+			session.setAttribute("addWishresult", 0);
+			System.out.println("wishlist 추가 실패");
 		}
+		
+		return "redirect:/witsh_detail.do";
+	}
+	
+	@RequestMapping("/delWish.do")
+	public String delWish(HttpSession session) {
+		// 회원 정보 세션 가져오기
+		Member resultM = (Member) session.getAttribute("member");
+		// 음식 정보 세션 가져오기
+		Food resultF = (Food) session.getAttribute("Food");
+		
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("resultF", resultF.getFood_seq());
+		map.put("resultM", resultM.getUser_id());
+		System.out.println("hashmap출력확인" + map.values());
+		
+		int delWishresult = mapper.delWish(map);
+		System.out.println("addWishresult확인" + delWishresult);
+		
+		if(delWishresult == 1) {
+			session.setAttribute("delWishresult", 1);
+			System.out.println("wishlist 삭제 성공");
+		}else {
+			session.setAttribute("delWishresult", 0);
+			System.out.println("wishlist 삭제 실패");
+		}
+		
+		return "redirect:/witsh_detail.do";
+		
 	}
 	
 	// 찜 목록 띄우기
@@ -89,32 +92,4 @@ public class WishlistController {
 		}
 		return list;
 	}
-	
-	// 찜 취소
-	/*
-	 * @RequestMapping("/noWish.do") public void noWish(HttpSession session) {
-	 * 
-	 * // 회원, 음식, 찜 정보 저장 Member result_mem = (Member)
-	 * session.getAttribute("member"); Food result_food = (Food)
-	 * session.getAttribute("Food"); Wishlist result_wish = (Wishlist)
-	 * session.getAttribute("wishlist");
-	 * 
-	 * // 찜 취소 시, 페이지는 그대로, 버튼 변경 int cnt = mapper.noWish(result_mem.getUser_id(),
-	 * result_food.getFood_seq(), result_wish.getWish_or_not());
-	 * 
-	 * if (cnt == 1) { System.out.println("wishlist 삭제 성공"); } else {
-	 * System.out.println("wishlist 삭제 실패"); }
-	 * 
-	 * 
-	 * }
-	 */
-	
-
-			 
-				
-			
-			
-			
-			
-	
 }

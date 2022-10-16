@@ -91,7 +91,8 @@
 						<span style="width: 90%;" class="form-control detail-fontsize">[[${session.Food.introduce}]]</span>
 					</div>
 					<!-- 찜 버튼 -->
-					<button type="button" class="btn-like">💗</button>
+					<button type="button" class="btn-like" th:if="${session.checkWish == null} or ${session.checkWish == 0}">💗</button>
+					<button type="button" class="btn-dislike" th:if=" ${session.checkWish == 1}">💗</button>
 				</div>
 			</div>
 
@@ -135,11 +136,20 @@
   
 	<!-- 상세찜 -->
 	<script>
-	    $(".btn-like").click(function () {
-	      /* 찜 기능 넣어봄 */
-	      location.href="saveWish.do";
-	      $(this).toggleClass("done");
-	    })
+
+  	$(document).on("click", ".btn-dislike", function(e){
+		// wishlist 삭제
+  		console.log('하트 버튼 등록')
+		location.href="delWish.do"
+	})
+	
+  	$(document).on("click", ".btn-like", function(e){
+  		console.log('하트 버튼 등록')
+		// wishlist 추가
+		console.log('찜')
+		location.href="addWish.do"
+	})
+	
     </script>
   
 	<script>
