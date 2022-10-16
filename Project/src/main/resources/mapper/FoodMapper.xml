@@ -52,5 +52,14 @@
 		select count(*) from wishlist where user_id=#{resultM} and food_seq=#{resultF}
 	</select>
 	
+
 	
+		<select id="ingreName" parameterType="String" resultType="String">
+		select ingredient_name from ingredient where 
+		<foreach collection="list" item="item" open="ingredient_seq in(" close=")" separator=",">
+			#{item}
+		</foreach>
+	</select>
+	
+
 </mapper>

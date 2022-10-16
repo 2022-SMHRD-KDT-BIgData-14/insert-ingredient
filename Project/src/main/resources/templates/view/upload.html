@@ -90,23 +90,31 @@
 					<!-- 식재료 업로드창 -->
 					<div class="col-xs-12 form-group-load-01">
 						<div class="search-center">
-							<input type="text" id="name" autofocus
-								placeholder="insert ingredient">
 							<!-- 이미지 업로드 폼 시작 -->
 							<form class="upload-form-images">
 								<input style="display: none;" name="ingredient_img" type="file"
 									class="btn btn-primary btn-lg search-center-01"
-									id="chooseFile02" accept="image/*" onchange="loadFile(this)">
-								<input style="display: none;" type="file"
-									class="btn btn-primary btn-lg search-center-01"
-									id="chooseFile02"> <label
-									class="btn btn-primary btn-lg upload-label-pd"
-									for="chooseFile02">Ingredient IMG</label> <label
-									class="btn btn-primary btn-lg upload-label-pd"
-									for="chooseFile02">Receipt IMG</label>
+									id="chooseFile01" accept="image/*" onchange="loadFile(this)">
+								<label class="btn btn-primary btn-lg upload-label-pd ingredient-color"
+									for="chooseFile01">Ingredient IMG</label>
 							</form>
-							<button class="btn btn-primary btn-lg upload-label-pd" onclick="uploadImages()">Save</button>
-							<!-- </form> -->
+							<!-- 식재료 버튼 -->
+							<button class="btn btn-primary btn-lg upload-label-pd ingredient-color" onclick="uploadImages()">Save</button>
+							
+							<!-- 영수증 업로드 폼 시작 -->
+							<form class="upload-form-ocr">
+								<input style="display: none;" name="ocr_img" type="file"
+									class="btn btn-primary btn-lg search-center-01"
+									id="chooseFile02" accept="image/*" onchange="loadFile(this)"> 
+								
+								<label class="btn btn-primary btn-lg upload-label-pd recipe-color"
+									for="chooseFile02">Receipt IMG</label>
+							</form>	 
+							<!-- 영수증 버튼 -->
+							<button class="btn btn-primary btn-lg upload-label-pd recipe-color" onclick="uploadOCR()">Save</button>
+							
+							<input type="text" id="name" autofocus
+								placeholder="insert ingredient">
 						</div>
 					</div>
 
@@ -184,20 +192,7 @@
     };
   </script>
 
-	<!-- 비동기 검색 -->
-	<!-- 방식01 엔터치면 나오기-->
-	<!--   <script>
-    function printName() {
-      const name = document.getElementById('name').value;
-      document.getElementById("result").innerText = name;
-      // console.log()
-      // const close = document.getElementById('result').appendChild;
-
-    }
-
-  </script> -->
-
-	<script>
+<script>
 $(document).ready(function(){
 
   var name = $("#name")
@@ -211,29 +206,26 @@ $(document).ready(function(){
 			$("#btn2").click()	
       
 		}
-    $("#btn2").click(function(){//button 클릭이 발생했을 경우 이벤트발생
-      // console.log($message.val()) // input 에 작성된 내용이 콘솔창에 발생
-      // alert(name.val()) //input 에 작성된 내용이 알림으로 발생
-      
-      const btn1 = document.getElementById('btn1');
-      
-      // btn1 숨기기 (display: none)
-      if(btn1.style.display !== 'none') {
-        btn1.style.display = 'none';
-      }
-      // btn` 보이기 (display: block)
-      else {
-        btn1.style.display = 'block';
-      }
-  
-    })
-
+	    $("#btn2").click(function(){//button 클릭이 발생했을 경우 이벤트발생
+	      // console.log($message.val()) // input 에 작성된 내용이 콘솔창에 발생
+	      // alert(name.val()) //input 에 작성된 내용이 알림으로 발생
+	      
+	      const btn1 = document.getElementById('btn1');
+	      
+	      // btn1 숨기기 (display: none)
+	      if(btn1.style.display !== 'none') {
+	        btn1.style.display = 'none';
+	      }
+	      // btn` 보이기 (display: block)
+	      else {
+	        btn1.style.display = 'block';
+	      }
+	  
+	    })
 	})
-
-
-  
 })
 </script>
+
 var list = [];
 	
 
@@ -268,10 +260,124 @@ var list = [];
 <!-- 플라스크_식재료 이미지 업로드!! & 음식 목록 -->
 <script type="text/javascript">
 
-// 업로드 이미지 띄우기 플라스크 연동
+// 업로드 영수증 띄우기 플라스크 연동(영수증)
+function uploadOCR(){
+	console.log('업로드영수증!!')
+	
+	var form = $('.upload-form-ocr')[0];
+    var formData = new FormData(form);
+	
+	console.log(form)
+	
+	$.ajax({
+		type:'post',
+		url:'http://127.0.0.1:5002/ocrUpload',
+		data:formData,
+		dataType:'json',
+		contentType : false,
+        processData : false,
+		success:function(e){successUpload2(e)},
+		error:function(){alert('플라스크 요청 실패임')}
+	})
+}
+	
+// 플라스크 성공했을 때, 실행할 함수(영수증)
+function successUpload2(e){
+	alert("업로드 추출 성공함-영수증")
+	console.log("영수증 확인" + e.data)
+	
+	var ingredient_arr = e.data.split(",")
+	console.log("0번째 재료" + ingredient_arr[0])
+	
+	console.log("타입확인하기1" + typeof(ingredient_arr))
+	String(ingredient_arr)
+	console.log("타입확인하기2" + typeof(ingredient_arr))
+	
+	// 식재료 숫자에 해당하는 식재료 이름 가져오기^^
+	var ingredient_name_list = new Array();					
+	
+	$.ajax({
+		url:"print_ingreName.do",
+		type:"post",
+		async:false,
+		data:{"ingredient_arr":ingredient_arr},
+		dataType:"json",
+		success:function(e){
+			console.log("리스트 보내기 성공함" + e.data)
+			
+			var ingreSeq_arr = e.data.split(",")
+			
+			for(var i = 0; i<ingredient_arr.length; i++){
+				ingredient_name_list.push(ingreSeq_arr[i])
+			}
+		},
+		error:function(e){alert('seq error~!')}
+	})
+	console.log("컨트롤러name확인해보기 : " + ingredient_name_list)
+			
+	
+	// 태그로 띄우기
+	for(let i = 0; i<ingredient_arr.length; i++){
+		
+		// 태그 삽입
+		var tag = {};
+		var counter = 0;
+
+		// 태그를 추가한다.
+		function addTag(value) {
+			tag[counter] = value; // 태그를 Object 안에 추가
+			counter++; // counter 증가 삭제를 위한 del-btn의 고유 id 가 된다.
+		}
+		// 최종적으로 서버에 넘길때 tag 안에 있는 값을 array type 으로 만들어서 넘긴다.
+		function marginTag() {
+			return Object.values(tag).filter(
+				function(word) {
+					return word !== "";
+			});
+		}
+		
+		$("#tag-list").append(
+			"<li class='tag-item'>"
+			+ ingredient_name_list[i]
+			+ "<span class='del-btn' idx='" + counter + "' name='"+ ingredient_seq +"'>x</span></li>");
+		
+		addTag(ingredient_arr[i]);
+		console.log("반복문 속 재료 이름" + ingredient_name_list[i])
+		console.log("---------------------------------")
+		console.log("반복문 속 재료 번호" + ingredient_arr)
+		
+	} //for문 끝
+	
+	//list.push(ingredient_seq)
+	var taglist = {
+		"taglist" : list
+	}
+	//tagList(JSON.stringify(taglist))
+	
+	//ingredient_arr
+	//console.log("식재료 여러개 확인 : " + ingredient_arr)
+	
+/* 	for(let i = 0; i<ingredient_arr.length; i++){
+		list.push(ingredient_arr[i])
+	} */
+	
+	//list.push(ingredient_arr[0])
+	//list.push(ingredient_arr[1])
+	// 랜덤으로 뽑아보기
+	randomNum = Math.floor(Math.random() * ingredient_arr.length)
+	list.push(ingredient_arr[randomNum])
+	
+	result = "{\"taglist\": ["+ list +"] }"
+	console.log(result)
+	tagList(result)
+	
+	
+}
+
+// 업로드 이미지 띄우기 플라스크 연동(식재료)
 function uploadImages(){
 	
-	console.log('업로드!!')
+	console.log('업로드식재료!!')
 	
 	var form = $('.upload-form-images')[0];
     var formData = new FormData(form);
@@ -280,17 +386,19 @@ function uploadImages(){
 	
 	$.ajax({
 		type:'post',
-		url:'http://127.0.0.1:5000/fileUpload',
+		url:'http://127.0.0.1:5001/fileUpload',
 		data:formData,
 		dataType:'json',
 		contentType : false,
         processData : false,
-		success:successUpload,
+		success:function(e){successUpload(e)},
 		error:function(){alert('플라스크 요청 실패임')}
 	})
+	
+	
 }
 
-// 플라스크 성공했을 때, 실행할 함수
+// 플라스크 성공했을 때, 실행할 함수(식재료)
 function successUpload(e){
 	alert("업로드 추출 성공함")
 	console.log("식재료 확인" + e.data)
@@ -309,21 +417,6 @@ function successUpload(e){
 		// ,를 기준으로 자르기
 		var ingredient_arr = ingredient_data.split(",")
 		console.log("0번째 재료" + ingredient_arr[0])
-		
-		// ingredient_seq 담아오기(식재료 여러개)
-		/* var ingredient_seq2;
-		$.ajax({
-			url:"print_ingreSeq2.do",
-			type:"post",
-			async:false,
-			data:{"ingredient_arr" : ingredient_arr},
-			dataType:"json",
-			success:function(data){
-				ingredient_seq2 = data;
-			},
-			error:function(e){alert('seq error~!')}
-		})
-		console.log("컨트롤러seq2확인해보기:"+ingredient_seq2) */
 		
 		for(let i = 0; i<ingredient_arr.length; i++){
 			// 태그 삽입

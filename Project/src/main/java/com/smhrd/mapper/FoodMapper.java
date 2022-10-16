@@ -35,6 +35,9 @@ public interface FoodMapper{
 	// 식재료 이름에 맞는 식재료 번호 가져오기1
 	public Integer ingreSeq(String ingredient_name);
 	
+	// 식재료 번호에 맞는 식재료 이름 가져오기
+	public List<String> ingreName(List list);
+	
 	// detailpage접근 시 찜 여부 확인
 	public Integer searchWish(HashMap<String, Object> map);
 }

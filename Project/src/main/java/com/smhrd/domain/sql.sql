@@ -146,5 +146,6 @@ select * from ingredient where ingredient_name = 'potato'
 
 select * from ingredient where ingredient_name = 'pork'
 
-select ingredient_seq from ingredient where ingredient_name = 'egg'
+select ingredient_seq from ingredient where ingredient_name = 'Square fish cake'
+select ingredient_name from ingredient where ingredient_seq = 1860
 

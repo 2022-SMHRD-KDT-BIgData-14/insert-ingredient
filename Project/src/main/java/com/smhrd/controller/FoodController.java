@@ -3,6 +3,7 @@ package com.smhrd.controller;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -209,46 +210,39 @@ public class FoodController {
 
 		}
 		
-		@RequestMapping("/imgrealtionList.do")
-		public List<Food> imgrealtionList(String list) {
-
-			System.out.println("imgrealtionList.do 들어옴");
-			System.out.println("태그 list:" + list);
-			// Json 파싱
-			JsonParser parser = new JsonParser();
-			JsonElement json = parser.parse(list).getAsJsonObject().get("taglist");
-			
-			// 불필요한 string 제거
-			String[] chList = json.toString()
-								  .replace("[", "").replace("]", "").replace("'", "").replace("\"", "").split(",");
-
-			ArrayList<Integer> intList = new ArrayList<Integer>();
-			
-			// 정제한 요소 intList에 담기
-			for (String str : chList) {
-				intList.add(Integer.parseInt(str));
-			}
-			
-			ArrayList<Relationship> relationlist;
-			
-			// 조합 가능한 음식 목록 찾기
-			relationlist = (ArrayList<Relationship>) mapper.RelationList(new FoodVO(intList.size(), intList));
-
-			intList.clear();
-
-			for (int i = 0; i < relationlist.size(); i++) {
-				intList.add(relationlist.get(i).getFood_seq());
-			}
-			
-			// 조합 가능한 음식 목록의 column정보를 모두 가져와 return
-			List<Food> foodlist = null;
-			if (intList.size() != 0) {
-				foodlist = mapper.FoodList(intList);
-			}
-
-			return foodlist;
-
-		}
+		/*
+		 * @RequestMapping("/imgrealtionList.do") public List<Food>
+		 * imgrealtionList(String list) {
+		 * 
+		 * System.out.println("imgrealtionList.do 들어옴"); System.out.println("태그 list:" +
+		 * list); // Json 파싱 JsonParser parser = new JsonParser(); JsonElement json =
+		 * parser.parse(list).getAsJsonObject().get("taglist");
+		 * 
+		 * // 불필요한 string 제거 String[] chList = json.toString() .replace("[",
+		 * "").replace("]", "").replace("'", "").replace("\"", "").split(",");
+		 * 
+		 * ArrayList<Integer> intList = new ArrayList<Integer>();
+		 * 
+		 * // 정제한 요소 intList에 담기 for (String str : chList) {
+		 * intList.add(Integer.parseInt(str)); }
+		 * 
+		 * ArrayList<Relationship> relationlist;
+		 * 
+		 * // 조합 가능한 음식 목록 찾기 relationlist = (ArrayList<Relationship>)
+		 * mapper.RelationList(new FoodVO(intList.size(), intList));
+		 * 
+		 * intList.clear();
+		 * 
+		 * for (int i = 0; i < relationlist.size(); i++) {
+		 * intList.add(relationlist.get(i).getFood_seq()); }
+		 * 
+		 * // 조합 가능한 음식 목록의 column정보를 모두 가져와 return List<Food> foodlist = null; if
+		 * (intList.size() != 0) { foodlist = mapper.FoodList(intList); }
+		 * 
+		 * return foodlist;
+		 * 
+		 * }
+		 */
 		
 		// 업로드했을 때 식재료 시퀀스 알아내기.. (식재료 1개)
 		// 식재료 이름을 통해 식재료 번호 가져오는 mapper 만들어보기
@@ -267,6 +261,40 @@ public class FoodController {
 			return seq==null? 0 : seq;
 		}
 		
-
+		// 식재료 번호 통해 식재료 이름 가져오기
+		@RequestMapping("/print_ingreName.do")
+		public String ingreName(@RequestBody String ingredient_arr) {
+			System.out.println("data확인해보기: " + ingredient_arr);
+			
+			// 담아온 데이터 리스트로 담아오는거 성공
+			List<String> list = new ArrayList<String>();
+			
+			ingredient_arr = ingredient_arr.replace("+", "");
+			ingredient_arr = ingredient_arr.replace("ingredient_arr%5B%5D", "");
+			ingredient_arr = ingredient_arr.replace("&", "");
+			
+			System.out.println("잘대체됐니.."+ingredient_arr);
+			String[] data = ingredient_arr.split("=");
+			
+			for(int i=1; i<data.length; i++){
+			    //System.out.println(data[i]);
+				list.add(data[i]);
+			}
+			System.out.println("data잘렸니?" + list);
+			
+			// 이름으로 바꾸기
+			List<String> name_list = mapper.ingreName(list);
+			
+			String ajaja = "{\"data\": \"" + name_list.toString() +"\" }";
+			
+			// 대괄호 제거
+			ajaja = ajaja.replace("[", "");
+			ajaja = ajaja.replace("]", "");
+			
+			System.out.println("ajaja" + ajaja);
+			return ajaja;
+			
+			
+		}
 	}
 }
