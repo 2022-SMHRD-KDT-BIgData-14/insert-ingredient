@@ -83,7 +83,7 @@
 					<!-- <h1>About Food</h1> -->
 					<div class="col-md-4 col-xs-6 form-group ">
 						<!-- 요리 이름 -->
-						<h1><span class="form-control detail-fontsize">[[${session.Food.food_name}]]</span></h1>
+						<h1><span class="form-control detail-foodname">[[${session.Food.food_name}]]</span></h1>
 							
 					</div>
 					<div class="col-md-12 col-xs-12 form-group ">
@@ -95,12 +95,12 @@
 				</div>
 			</div>
 
-			<div class="recipe-youtube" style="height:100px">
+			<div class="recipe-youtube" >
 				<!-- <img src="../images/img-07.jpg" alt=""> -->
 				<!-- <textarea
 					style="vertical-align: middle; margin-left: -10%; width: 10%; font-size: 20px; resize: none;"
 					name="" id="" cols="10" rows="1">해당영상자리</textarea> -->
-				<iframe width="70%" height="auto" th:src="@{${session.Food.youtube}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+				<iframe th:src="@{${session.Food.youtube}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
 					이 브라우저는 유튜브를 지원하지 않습니다.</iframe>	
 			</div>
 

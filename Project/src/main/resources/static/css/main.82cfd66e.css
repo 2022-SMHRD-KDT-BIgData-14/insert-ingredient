@@ -4204,6 +4204,14 @@ color: red;}
   margin-left: 2%;
 }
 
+.detail-foodname{
+	border: none;
+	color: #ff6360;
+	font-size: 60px;
+	width: max-content;
+	height: max-content;
+}
+
 .detail-fontsize{
   font-size: 30px;
   height: auto;
@@ -4248,8 +4256,12 @@ color: red;}
 /* 상세해당영상 */
 .recipe-youtube {
   text-align: center;
-  margin-bottom: 3%;
-  margin-top: 3%;
+  width: 100%
+}
+
+.recipe-youtube>iframe{
+	width: 800px;
+	height: 500px;
 }
 
 .recipe-youtube img{
@@ -4663,11 +4675,18 @@ li{
 
 /* 찜 슬라이드 */
 /* 보여줄 구간의 높이와 넓이 설정 */
+
+.slides-wrap{
+	width: 100%;
+	margin: 0 auto;
+	position: relative;
+}
+
 #slideShow1{
   width: 500px;
   height: 300px;
   position: relative;
-  /* margin: 50px auto; */
+ /*  margin: 50px auto; */
   overflow: hidden;   
   /*리스트 형식으로 이미지를 일렬로 
   정렬할 것이기 때문에, 500px 밖으로 튀어 나간 이미지들은
@@ -4677,14 +4696,17 @@ li{
 
 
 .slides1{
-  position: absolute;
+ /*  position: absolute; */
   left: 0;
   top: 0;
-  width: 500px; /* 슬라이드할 사진과 마진 총 넓이 */
+  /* width: 300px; */ /* 슬라이드할 사진과 마진 총 넓이 */
   transition: left 0.5s ease-out; 
   /*ease-out: 처음에는 느렸다가 점점 빨라짐*/
   /* margin-bottom: 10%; */
-  margin-top: 10%;
+  /* margin: 100px; */
+  height: auto;
+  text-align: center;
+  position: inherit;
 }
 
 /* 첫 번째 슬라이드 가운데에 정렬하기위해
@@ -4700,7 +4722,9 @@ li{
 }
 
 .slides1 li{
-  float: left;
+  /* float: left; */
+  display: inline-block;
+  list-style: none;
 }
 
 .controller1 span{
@@ -4858,18 +4882,8 @@ li{
 
 .my-slide-00{
   cursor: pointer;
-  border-radius: 50px;
-  width: 100%;
-   	position: absolute; 
-	vertical-align: middle;
-	height: auto;
-    left: -100%;
-    right: -100%;
-    top: -100%;
-    bottom: -100%;
-    margin: auto;
-    min-height: 100%;
-    min-width: 100%;
+  width: 20%;
+  margin: auto;
 }
 
  .my-slide-big01{
@@ -4879,7 +4893,7 @@ li{
 } 
 
 .click-img{
-	width: 100%;
+/* 	width: 100%; */
 	position: absolute;
 	vertical-align: middle;
 	height: auto;
@@ -4890,7 +4904,7 @@ li{
     margin: auto;
     min-height: 100%;
     min-width: 100%;
-    border-radius: 50px;
+    cursor: pointer;
 }
 
 
