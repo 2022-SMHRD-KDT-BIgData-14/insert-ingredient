@@ -71,8 +71,15 @@
 	<!-- 메인화면 -->
 	<main class="" id="main-collapse">
 		<div class="list">
-			<h1>Detail</h1>
-			<div class="row">
+		
+		<div class="row">
+		<h1> <span class="main-title">D</span><!-- 
+          	--><span class="main-title">e</span><!-- 
+         	 --><span class="main-title">t</span><!-- 
+        	  --><span class="main-title">a</span><!-- 
+        	  --><span class="main-title">i</span><!-- 
+        	  --><span class="main-title">l</span></h1>	
+			
 				<div class="col-xs-12 col-md-6 detail-upmargin">
 					<!-- 메인 음식 사진 -->
 					<img class="img-responsive upload-print-img" alt=""
@@ -94,7 +101,7 @@
 					<button type="button" class="btn-like" th:if="${session.checkWish == null} or ${session.checkWish == 0}">💗</button>
 					<button type="button" class="btn-dislike" th:if=" ${session.checkWish == 1}">💗</button>
 				</div>
-			</div>
+		
 
 			<div class="recipe-youtube" >
 				<!-- <img src="../images/img-07.jpg" alt=""> -->
@@ -124,6 +131,7 @@
 				<!-- </div> -->
 			<!-- </div> -->
 		</div>
+		</div>
 		<div class="moveTopBtn">Top</div>
 	</main>
 
@@ -133,6 +141,17 @@
 	      navActivePage();
 	    });
     </script>
+  <!-- 글씨 부드럽게 -->
+  <script>
+    const introText = document.querySelectorAll('.main-title')
+
+    window.onload = () => {
+      let timer = 100;
+      introText.forEach((item) => {
+        item.style.animation = `fade 500ms ${(timer += 80)}ms forwards`;
+      });
+    };
+  </script>
   
 	<!-- 상세찜 -->
 	<script>

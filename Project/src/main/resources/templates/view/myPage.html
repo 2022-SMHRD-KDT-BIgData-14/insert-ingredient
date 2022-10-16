@@ -66,38 +66,41 @@
   <main class="" id="main-collapse">
     <div class="row">
       <div class="col-xs-12 section-container-spacer ">
-        <h1>[[${session.member.user_name}]]님, MyPage</h1>
+        <h1><span class="main-title">M</span><!-- 
+          --><span class="main-title">y</span><!-- 
+          --><span class="main-title">P</span><!-- 
+          --><span class="main-title">a</span><!-- 
+          --><span class="main-title">g</span><!-- 
+          --><span class="main-title">e</span></h1>
         <!-- 찜 -->
-        <div class="col-xs-12 section-container-spacer ">
+<!--         <div class="col-xs-12 section-container-spacer slides-wrap">
 		<div class="col-xs-6 slides-wrap">
           <h2>찜한목록</h2>
           <div id="slideShow1">
-            <!-- 찜한 음식 목록 리스트로 가져오기 -->
-            <ul class="slides1" th:each="list:${list}">
-              <li><img class="my-slide-00" th:src="${list.food_img}" alt="음식 사진 자리임"></li>
+            찜한 음식 목록 리스트로 가져오기
+ 
            
             <ul class="slides1">
-              <li th:each="list:${list}">
-              	<!-- img 반복 -->
+              <li th:each="list:${list}" class="slides1">
+              	img 반복
               	<img class="my-slide-00" th:src="${list.food_img}" alt="음식 사진 자리임">
               </li>
-              <!-- <li><img id="wishIMG" alt="food_img자리임" th:src="${list.food_img}"></li> -->
-              <!-- <li><img style="width: 300px;" src="../images/like01.jpg" alt=""></li>
+              <li><img id="wishIMG" alt="food_img자리임" th:src="${list.food_img}"></li>
+              <li><img style="width: 300px;" src="../images/like01.jpg" alt=""></li>
               <li><img style="width: 300px;" src="../images/img-010.jpg" alt=""></li>
               <li><img style="width: 300px;" src="../images/like01.jpg" alt=""></li>
-              <li><img style="width: 300px;" src="../images/img-010.jpg" alt=""></li> -->
+              <li><img style="width: 300px;" src="../images/img-010.jpg" alt=""></li>
             </ul>
-            <p class="controller1">
-
-              <!-- &lang: 왼쪽 방향 화살표
-              &rang: 오른쪽 방향 화살표 -->
+			<p class="controller1">
+              &lang: 왼쪽 방향 화살표
+              &rang: 오른쪽 방향 화살표
               <span class="prev1">&lang;</span>
               <span class="next1">&rang;</span>
             </p>
           </div>
 
           
-         <!--  <h2>최근 목록</h2>
+          <h2>최근 목록</h2>
           <div id="slideShow2">
             <ul class="slides2" th:each="recentList:${recentList}">
               <li><img style="width: 300px;" class="my-slide-00" th:src="${recentList.food_img}" alt="최근 본 자리임"></li>
@@ -115,13 +118,35 @@
               <span class="prev2">&lang;</span>
               <span class="next2">&rang;</span>
             </p>
+          </div>
           </div> -->
+          
+              <div class="col-xs-12 section-container-spacer ">
+
+          <h2>찜 목록</h2>
+          <div  id="slideShow1">
+            <ul class="slides1">
+            <li th:each="list:${list}" class="slides1">
+              <img class="my-slide-00" th:src="${list.food_img}" alt="음식 사진 자리임"></li>
+            <!--   <li><img class="my-slide-00"  src="../images/음식07.jpg" alt=""></li>
+              <li><img class="my-slide-00"  src="../images/음식07.jpg" alt=""></li>
+              <li><img class="my-slide-00"  src="../images/음식07.jpg" alt=""></li>
+              <li><img class="my-slide-00"  src="../images/음식07.jpg" alt=""></li> -->
+            
+            </ul>
+            <p class="controller1">
+
+              <!-- &lang: 왼쪽 방향 화살표
+              &rang: 오른쪽 방향 화살표 -->
+              <span class="prev1">&lang;</span>
+              <span class="next1">&rang;</span>
+            </p>
           </div>
           
-            <div class="col-xs-6 my-slide-big01">
-          <img class="click-img" src="./assets/images/음식01.jpg" alt="">
         </div>
-          
+      
+
+          </div>
           
         </div>
 
@@ -171,6 +196,20 @@
       navActivePage();
     });
   </script>
+  
+  <!-- 글씨 부드럽게 -->
+  <script>
+    const introText = document.querySelectorAll('.main-title')
+
+    window.onload = () => {
+      let timer = 100;
+      introText.forEach((item) => {
+        item.style.animation = `fade 500ms ${(timer += 80)}ms forwards`;
+      });
+    };
+  </script>
+  
+  <!-- 슬라이드 -->
   <script>
     const slides = document.querySelector('.slides1'); //전체 슬라이드 컨테이너
     const slideImg = document.querySelectorAll('.slides1 li'); //모든 슬라이드들
@@ -178,7 +217,7 @@
     const slideCount = slideImg.length; // 슬라이드 개수
     const prev = document.querySelector('.prev1'); //이전 버튼
     const next = document.querySelector('.next1'); //다음 버튼
-    const slideWidth = 500; //한개의 슬라이드 넓이
+    const slideWidth = 1000; //한개의 슬라이드 넓이
     const slideMargin = 80; //슬라이드간의 margin 값
 
     //전체 슬라이드 컨테이너 넓이 설정

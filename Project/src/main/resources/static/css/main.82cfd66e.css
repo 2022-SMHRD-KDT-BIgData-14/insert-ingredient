@@ -4220,7 +4220,7 @@ color: red;}
 }
 
 .detail-fontsize{
-  font-size: 30px;
+  font-size: 25px;
   height: auto;
   border: none;
   color: #ff6360;
@@ -4682,18 +4682,11 @@ li{
 
 /* 찜 슬라이드 */
 /* 보여줄 구간의 높이와 넓이 설정 */
-
-.slides-wrap{
-	width: 100%;
-	margin: 0 auto;
-	position: relative;
-}
-
 #slideShow1{
-  width: 500px;
-  height: 300px;
+  width: 100%;
+  height: 500px;
   position: relative;
- /*  margin: 50px auto; */
+  /* margin: 50px auto; */
   overflow: hidden;   
   /*리스트 형식으로 이미지를 일렬로 
   정렬할 것이기 때문에, 500px 밖으로 튀어 나간 이미지들은
@@ -4703,17 +4696,13 @@ li{
 
 
 .slides1{
- /*  position: absolute; */
+  position: relative;
   left: 0;
   top: 0;
-  /* width: 300px; */ /* 슬라이드할 사진과 마진 총 넓이 */
+  width: 700px; /* 슬라이드할 사진과 마진 총 넓이 */
   transition: left 0.5s ease-out; 
   /*ease-out: 처음에는 느렸다가 점점 빨라짐*/
   /* margin-bottom: 10%; */
-  /* margin: 100px; */
-  height: auto;
-  text-align: center;
-  position: inherit;
 }
 
 /* 첫 번째 슬라이드 가운데에 정렬하기위해
@@ -4729,9 +4718,7 @@ li{
 }
 
 .slides1 li{
-  /* float: left; */
-  display: inline-block;
-  list-style: none;
+  float: left;
 }
 
 .controller1 span{
@@ -4889,7 +4876,7 @@ li{
 
 .my-slide-00{
   cursor: pointer;
-  width: 20%;
+  width: 90%;
   margin: auto;
 }
 
