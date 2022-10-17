@@ -4836,8 +4836,8 @@ label.upload-label01:hover {
   	width: auto;
   }
   
-  #slideShow1{
-  	width: auto;
+  div#slideShow1{
+  	height: 300px;
   }
 }
 
