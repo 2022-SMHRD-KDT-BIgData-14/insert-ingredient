@@ -4827,9 +4827,17 @@ label.upload-label01:hover {
 
 /* 마이 */
 /* 마이목록호버 */
-@media (min-width:1px){
-  .my-img-size{
-    width: 20%;
+@media (max-width:440px) and (min-width:1px){
+  img.my-slide-00{
+  	width: 30%;
+  }
+  
+  li.slides1{
+  	width: auto;
+  }
+  
+  #slideShow1{
+  	width: auto;
   }
 }
 
