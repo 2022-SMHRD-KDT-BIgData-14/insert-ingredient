@@ -149,3 +149,4 @@ select * from ingredient where ingredient_name = 'pork'
 select ingredient_seq from ingredient where ingredient_name = 'Square fish cake'
 select ingredient_name from ingredient where ingredient_seq = 1860
 
+select * from ingredient where ingredient_seq = 1876

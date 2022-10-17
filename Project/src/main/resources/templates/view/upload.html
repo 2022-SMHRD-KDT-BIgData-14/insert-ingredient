@@ -277,7 +277,7 @@ function uploadOCR(){
 		contentType : false,
         processData : false,
 		success:function(e){successUpload2(e)},
-		error:function(){alert('플라스크 요청 실패임')}
+		error:function(){alert('Please upload the receipt')}
 	})
 }
 	
@@ -311,7 +311,7 @@ function successUpload2(e){
 				ingredient_name_list.push(ingreSeq_arr[i])
 			}
 		},
-		error:function(e){alert('seq error~!')}
+		error:function(e){alert('Please upload receipt')}
 	})
 	console.log("컨트롤러name확인해보기 : " + ingredient_name_list)
 			
@@ -392,7 +392,7 @@ function uploadImages(){
 		contentType : false,
         processData : false,
 		success:function(e){successUpload(e)},
-		error:function(){alert('플라스크 요청 실패임')}
+		error:function(){alert('Please upload pictures')}
 	})
 	
 	

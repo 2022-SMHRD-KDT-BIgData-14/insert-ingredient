@@ -53,8 +53,8 @@
 	</select>
 	
 
-	
-		<select id="ingreName" parameterType="String" resultType="String">
+	<!-- 식재료 번호에 맞는 식재료 이름 가져오기 -->
+	<select id="ingreName" parameterType="String" resultType="String">
 		select ingredient_name from ingredient where 
 		<foreach collection="list" item="item" open="ingredient_seq in(" close=")" separator=",">
 			#{item}
