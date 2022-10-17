@@ -67,19 +67,19 @@
 			</div>
 		</nav>
 	</header>
-	
+
 	<!-- 메인화면 -->
 	<main class="" id="main-collapse">
 		<div class="list">
-		
-		<div class="row">
-		<h1> <span class="main-title">D</span><!-- 
+
+			<div class="row">
+				<h1><span class="main-title">D</span><!-- 
           	--><span class="main-title">e</span><!-- 
          	 --><span class="main-title">t</span><!-- 
         	  --><span class="main-title">a</span><!-- 
         	  --><span class="main-title">i</span><!-- 
-        	  --><span class="main-title">l</span></h1>	
-			
+        	  --><span class="main-title">l</span></h1>
+
 				<div class="col-xs-12 col-md-6 detail-upmargin">
 					<!-- 메인 음식 사진 -->
 					<img class="img-responsive upload-print-img" alt=""
@@ -90,47 +90,67 @@
 					<!-- <h1>About Food</h1> -->
 					<div class="col-md-4 col-xs-6 form-group ">
 						<!-- 요리 이름 -->
-						<h1><span class="form-control detail-foodname">[[${session.Food.food_name}]]</span></h1>
-							
+						<h1>
+							<span class="form-control detail-foodname">[[${session.Food.food_name}]]</span>
+						</h1>
+
 					</div>
 					<div class="col-md-12 col-xs-12 form-group ">
 						<!-- 요리 소개 -->
 						<span style="width: 90%;" class="form-control detail-fontsize">[[${session.Food.introduce}]]</span>
 					</div>
 					<!-- 찜 버튼 -->
-					<button type="button" class="btn-like" th:if="${session.checkWish == null} or ${session.checkWish == 0}">💗</button>
-					<button type="button" class="btn-dislike" th:if=" ${session.checkWish == 1}">💗</button>
+					<button type="button" class="btn-like"
+						th:if="${session.checkWish == null} or ${session.checkWish == 0}">💗</button>
+					<button type="button" class="btn-dislike"
+						th:if=" ${session.checkWish == 1}">💗</button>
 				</div>
-		
+			</div>
 
-			<div class="recipe-youtube" >
+			<div class="recipe-youtube">
 				<!-- <img src="../images/img-07.jpg" alt=""> -->
 				<!-- <textarea
 					style="vertical-align: middle; margin-left: -10%; width: 10%; font-size: 20px; resize: none;"
 					name="" id="" cols="10" rows="1">해당영상자리</textarea> -->
-				<iframe th:if="${session.Food.youtube != ''}" th:src="@{${session.Food.youtube}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
-					이 브라우저는 유튜브를 지원하지 않습니다.</iframe>	
-			</div>
+				<iframe th:if="${session.Food.youtube != ''}"
+					th:src="@{${session.Food.youtube}}" frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+					이 브라우저는 유튜브를 지원하지 않습니다.</iframe>
 
+			</div>
 			<!-- <div class="recipe_order"> -->
 			<!-- <div class="recipe-order"> -->
-				<!-- for문 돌려서 과정 이미지랑 글 가져오기 -->
-				<!-- <div id="process"> -->
-				<h2>Cooking Orders</h2>
+			<!-- for문 돌려서 과정 이미지랑 글 가져오기 -->
+			<div>
+				<h2 style="margin-left:1%; padding-top:1%;">
+				<span class="main-title">C</span><!-- 
+          	--><span class="main-title">o</span><!-- 
+         	 --><span class="main-title">o</span><!-- 
+        	  --><span class="main-title">k</span><!-- 
+        	  --><span class="main-title">i</span><!-- 
+        	  --><span class="main-title">n</span><!-- 
+        	   --><span class="main-title">g</span><!-- 
+        	  --><span class="main-title"> </span><!-- 
+        	  --><span class="main-title">O</span><!-- 
+        	  --><span class="main-title">r</span><!-- 
+        	   --><span class="main-title">d</span><!-- 
+        	  --><span class="main-title">e</span><!-- 
+        	  --><span class="main-title">r</span><!-- 
+        	  --><span class="main-title">s</span></h2>
 				<ul id="cooking_order"></ul>
 				<!-- <div id="processIMG" class="col-xs-12 col-md-6 datail-upmargin">
-					요리 과정 이미지
-					<img class="img-responsive detail-img-size" alt=""
-						th:src="@{https://recipe1.ezmember.co.kr/cache/recipe/2019/12/05/953857837fa18d0227096d79dc2af0621.jpg}">
-						[[${session.Food.process_img}]]
-					<br>
-				</div>
-				<div id="processArticle" class="col-md-6 recipe-order02">
-					요리 과정 글 공간(자바스크립트)
-				</div> -->
+						요리 과정 이미지
+						<img class="img-responsive detail-img-size" alt=""
+							th:src="@{https://recipe1.ezmember.co.kr/cache/recipe/2019/12/05/953857837fa18d0227096d79dc2af0621.jpg}">
+							[[${session.Food.process_img}]]
+						<br>
+					</div>
+					<div id="processArticle" class="col-md-6 recipe-order02">
+						요리 과정 글 공간(자바스크립트)
+					</div> -->
 				<!-- </div> -->
-			<!-- </div> -->
-		</div>
+			</div>
+
 		</div>
 		<div class="moveTopBtn">Top</div>
 	</main>
@@ -141,8 +161,8 @@
 	      navActivePage();
 	    });
     </script>
-  <!-- 글씨 부드럽게 -->
-  <script>
+	<!-- 글씨 부드럽게 -->
+	<script>
     const introText = document.querySelectorAll('.main-title')
 
     window.onload = () => {
@@ -152,7 +172,7 @@
       });
     };
   </script>
-  
+
 	<!-- 상세찜 -->
 	<script>
 
@@ -170,7 +190,7 @@
 	})
 	
     </script>
-  
+
 	<script>
 	    const $topBtn = document.querySelector(".moveTopBtn");
 	
@@ -184,9 +204,9 @@
 	      window.scrollTo({ top: document.body.scrollHeight });
 	    } */
     </script>
-    
-    <!-- 페이지 로드될 때, 요리 과정 split해서 띄우기 -->
-    <script type="text/javascript" th:inline="javascript">
+
+	<!-- 페이지 로드될 때, 요리 과정 split해서 띄우기 -->
+	<script type="text/javascript" th:inline="javascript">
     	$(document).ready(showProcess)
     	
     	function showProcess(){
@@ -227,9 +247,9 @@
 	    			</li>` */
 	    			
 	    			`<li class="order_li">
-	    			<div style="display:flex">
+	    			<div class="cooking-line" style="display:flex">
 	    			<img style="width:400px" id="orderIMG" src="${img_arr[i]}" alt="과정 이미지 자리임">
-	    			<div style="margin:3% 0 0 3%">
+	    			<div class="cooking-line-word" style="margin:3% 0 0 3%">
 	    			<h1>` + (i+1) + `</h1>
 	    			<p class="detail-flow-ment">` + article_arr[i] + `</p>
 	    			</div>
@@ -241,7 +261,7 @@
     	}
     	
     </script>
-    
+
 
 	<script type="text/javascript" src="../js/main.85741bff.js"></script>
 </body>

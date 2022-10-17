@@ -2081,7 +2081,7 @@ fieldset[disabled] a.btn {
   background-color: #FF6360;
   border-color: #FF6360; }
   
-  .recipe-color{
+ .recipe-color{
   	background-color: white;
   	color: #ff6360;
   }
@@ -2090,7 +2090,7 @@ fieldset[disabled] a.btn {
   	background-color: white;
   	color: #ff6360;
   }
-  
+
  /*  .recipe-color:hover{
   	
   } */
@@ -3925,19 +3925,67 @@ a.badge:hover, a.badge:focus {
 
 .search-center {
   /* text-align: center; */
-  /* display: flex; */
+  display: flex;
   justify-content: center;
   align-items: center;
   width: inherit;
 }
 
-@media (max-width:370px) and (min-width:1px){
+/* 업로드 반응형 */
+@media (max-width:440px) and (min-width:1px){
   .search-center{
-    width: 33.333%;
+    width: 33.3%;
+    display: inline;
+  }
+  
+ 
+  label.ingredient-color,button.ingredient-color{
+  	margin-left: 4%;
+  	padding-inline:8%;
+  }
+  
+   label.recipe-color,button.recipe-color{
+  	margin-left: 4%;
+  	padding-inline:10%;
+  }
+  
+ /*  .upload-form-images{
+    width: auto;
+  } */
+
+  .upload-label-pd {
+    margin-block: 1%;
+    padding-inline:8%;
+    margin-inline:-3%;
+  }
+
+  div.upload-keyword{ 
+    display: inline-flex;
+    margin-inline: 16%;
+    /* position: inherit; */
+    margin-top: -0.2%;
+  }
+  
+  .form-group-load-01{
+  	margin-top: 110px;
+  	padding-inline: 12%;
+  }
+  
+  input#name{
+  	font-size: 20px;
+    width: 89%;
+    outline: none;
+    line-height: 2.3;
+    text-align: center;
+    border-radius: 50px;
+    border: none;
+    margin-top: 1%;
+    margin-left: -2%;
   }
 }
+/* 업로드 반응형 끝 */
 
-.search-center>#name{
+#name{
   font-size: 20px;
   width: 34.2%;
   outline: none;
@@ -3954,7 +4002,13 @@ a.badge:hover, a.badge:focus {
   margin-left: 8px;
 }
 
+.ingredient-color{
+	float: left;
+}
 
+.recipe-color{
+	float: left;
+}
 
   /* 업로드키워드 닫기부분 */
   /* .image-upload{
@@ -4183,6 +4237,86 @@ color: red;}
   transition: all 0.1s linear; }
 
   /* 상세 */
+  
+   /* 상세 반응형 */
+  @media (max-width:440px) and (min-width:1px){
+  .detail-upmargin{
+  	max-width: 94%;
+  	margin-left: 1%;
+  	max-height: 360px;
+  	margin-block:-1%;
+  }
+  
+  .upload-print-img{
+  width: 100%;
+    position: absolute;
+    vertical-align: middle;
+    height: auto;
+    left: -50%;
+    right: -50%;
+    top: -100%;
+    bottom: -100%;
+    margin: auto;
+    min-height: 50%;
+    min-width: 50%;
+  }
+  
+    .food-first-img{
+        max-width: 95%;
+    }
+    span.detail-foodname{
+      	font-size: xx-large;
+    margin-left: -25%;
+    margin-block: -15%;
+    }
+    
+    span.detail-fontsize{
+      	font-size: x-large;
+    margin-left: -10%;
+    margin-top: -6%;
+        margin-bottom: -3%;
+    }
+
+	button.btn-like {
+    margin: -4%;
+	}
+
+	button.btn-dislike {
+    margin: -4% -4% -4% -1%;
+	}
+
+div.cooking-line{
+	width: 50%;
+    height: 200px;
+}
+
+li.order_li{
+	height: 330px;
+	margin-top: 6%;
+}
+
+	div.cooking-line-word h1{
+		font-size: x-large;
+		margin-block: -6%;
+	}
+
+p.detail-flow-ment{
+	font-size: inherit;
+    width: 200%;
+}
+
+
+    .food-second-imgs{
+        width: auto;
+    }
+
+    .recipe-order02{
+        font-size: medium;
+        margin-inline: 34%;
+    }
+  }
+/* 상세 반응형 끝 */
+  
   /* 상세 아이콘 */
 
  .btn-like {
