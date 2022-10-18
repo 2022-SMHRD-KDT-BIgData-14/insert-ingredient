@@ -209,40 +209,7 @@ public class FoodController {
 			return foodlist;
 
 		}
-		
-		/*
-		 * @RequestMapping("/imgrealtionList.do") public List<Food>
-		 * imgrealtionList(String list) {
-		 * 
-		 * System.out.println("imgrealtionList.do 들어옴"); System.out.println("태그 list:" +
-		 * list); // Json 파싱 JsonParser parser = new JsonParser(); JsonElement json =
-		 * parser.parse(list).getAsJsonObject().get("taglist");
-		 * 
-		 * // 불필요한 string 제거 String[] chList = json.toString() .replace("[",
-		 * "").replace("]", "").replace("'", "").replace("\"", "").split(",");
-		 * 
-		 * ArrayList<Integer> intList = new ArrayList<Integer>();
-		 * 
-		 * // 정제한 요소 intList에 담기 for (String str : chList) {
-		 * intList.add(Integer.parseInt(str)); }
-		 * 
-		 * ArrayList<Relationship> relationlist;
-		 * 
-		 * // 조합 가능한 음식 목록 찾기 relationlist = (ArrayList<Relationship>)
-		 * mapper.RelationList(new FoodVO(intList.size(), intList));
-		 * 
-		 * intList.clear();
-		 * 
-		 * for (int i = 0; i < relationlist.size(); i++) {
-		 * intList.add(relationlist.get(i).getFood_seq()); }
-		 * 
-		 * // 조합 가능한 음식 목록의 column정보를 모두 가져와 return List<Food> foodlist = null; if
-		 * (intList.size() != 0) { foodlist = mapper.FoodList(intList); }
-		 * 
-		 * return foodlist;
-		 * 
-		 * }
-		 */
+
 		
 		// 업로드했을 때 식재료 시퀀스 알아내기.. (식재료 1개)
 		// 식재료 이름을 통해 식재료 번호 가져오는 mapper 만들어보기

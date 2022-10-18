@@ -4053,6 +4053,13 @@ ul#tag-list{
 	display: contents;
 }
 
+ul li.tag-item {
+    padding: 8px 8px;
+    border-radius: 50px;
+    background-color: #ffa07a;
+    color: white;
+}
+
 .upload-keyword-font{
   color: white;
   font-size: 25px;
@@ -4630,7 +4637,7 @@ label.upload-label01:hover {
 }
 
 .form-group-start input{
-  /* width: 20%; */
+  width: 14.7%;
   line-height: 2;
   font-size: 20px;
   vertical-align: middle;
@@ -5275,7 +5282,7 @@ nav.nav-footer a{
     /* 공통 로고글씨 */
 .nav > li > a {
   color: #000; 
-  font-size: xx-large;
+  font-size: x-large;
   text-align: center;
 
 }
